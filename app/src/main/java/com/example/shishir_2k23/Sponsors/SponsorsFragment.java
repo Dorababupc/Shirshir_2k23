@@ -81,7 +81,7 @@ public class SponsorsFragment extends Fragment {
         view = (RecyclerView) v.findViewById(R.id.recview_sponsor);
         LinearLayoutManager layoutManager = new LinearLayoutManager(v.getContext());
         view.setLayoutManager(layoutManager);
-        mbase= FirebaseDatabase.getInstance().getReference().child("Sponsors");
+        mbase= FirebaseDatabase.getInstance("https://shishir-2k23-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Sponsors");
         FirebaseRecyclerOptions<ModelSponsor> options
                 = new FirebaseRecyclerOptions.Builder<ModelSponsor>()
                 .setQuery(mbase,ModelSponsor.class)
@@ -90,4 +90,16 @@ public class SponsorsFragment extends Fragment {
         // Connecting Adapter class with the Recycler view*/
         view.setAdapter(myAdapter);
     }
+    @Override
+    public void onStart() {
+        super.onStart();
+        myAdapter.startListening();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        myAdapter.stopListening();
+    }
+
 }
