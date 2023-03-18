@@ -2,13 +2,21 @@ package com.example.shishir_2k23.Sponsors;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.shishir_2k23.R;
+import com.example.shishir_2k23.Team.EventAdapterTeam;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +24,9 @@ import com.example.shishir_2k23.R;
  * create an instance of this fragment.
  */
 public class SponsorsFragment extends Fragment {
-
+    RecyclerView view;
+    AdapterSponsor myAdapter;
+    DatabaseReference mbase;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,5 +72,22 @@ public class SponsorsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sponsors, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(v, savedInstanceState);
+
+        view = (RecyclerView) v.findViewById(R.id.recview_sponsor);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(v.getContext());
+        view.setLayoutManager(layoutManager);
+        mbase= FirebaseDatabase.getInstance().getReference().child("Sponsors");
+        FirebaseRecyclerOptions<ModelSponsor> options
+                = new FirebaseRecyclerOptions.Builder<ModelSponsor>()
+                .setQuery(mbase,ModelSponsor.class)
+                .build();
+        myAdapter = new AdapterSponsor(options);
+        // Connecting Adapter class with the Recycler view*/
+        view.setAdapter(myAdapter);
     }
 }

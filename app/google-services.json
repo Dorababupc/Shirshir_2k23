@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "590719138078",
+    "firebase_url": "https://shishir-2k23-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "shishir-2k23",
+    "storage_bucket": "shishir-2k23.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590719138078:android:55d41feb8eb677c1ff710f",
+        "android_client_info": {
+          "package_name": "com.example.shishir_2k23"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590719138078-7bons4pv8ak9cqaejoi92hqcvjmjith5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDDCeHvD680QgIH57te1_AkPfL3w34hwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590719138078-7bons4pv8ak9cqaejoi92hqcvjmjith5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
