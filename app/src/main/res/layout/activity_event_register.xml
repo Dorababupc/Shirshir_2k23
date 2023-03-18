@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".EventRegisterActivity">
     <ScrollView
         android:layout_width="match_parent"
@@ -25,29 +25,47 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="Event Name"/>
-            <TextView
-                android:id="@+id/name_label"
-                android:layout_width="wrap_content"
-                android:textSize="15dp"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:text="Name" />
-
-            <EditText
-                android:id="@+id/name_field"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColorHint="@color/black"
-                android:hint="Enter Name"
-                android:inputType="text" />
+                android:background="@drawable/reg_style_card"
+                android:layout_margin="5dp"
+                android:orientation="vertical">
+                <TextView
+                    android:id="@+id/name_label"
+                    android:layout_width="wrap_content"
+                    android:layout_margin="3dp"
+                    android:padding="5dp"
+                    android:textSize="15dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:text="Name" />
 
+                <EditText
+                    android:id="@+id/name_field"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColorHint="@color/black"
+                    android:layout_margin="5dp"
+                    android:hint="Enter Full Name"
+                    android:inputType="text" />
+            </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/email_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:text="Email" />
 
@@ -56,13 +74,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter your email address"
                 android:inputType="textEmailAddress" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/phone_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:text="Phone" />
 
@@ -71,12 +99,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enetr Phone Number"
                 android:inputType="phone" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:text="Roll Number:" />
 
@@ -85,11 +123,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter Roll-No"
                 android:inputType="text|textNoSuggestions|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:text="College Name" />
 
@@ -98,13 +146,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter College Name"
                 android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textStyle="bold"
                 android:text="Year:" />
 
@@ -113,10 +171,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/year_options" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 android:text="Department:" />
@@ -126,11 +193,20 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:entries="@array/department_options" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textStyle="bold"
                 android:text="Program:" />
 
@@ -168,12 +244,15 @@
                     android:text="P.hd" />
 
             </RadioGroup>
+        </LinearLayout>
 
             <Button
                 android:id="@+id/register_button"
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
+                android:backgroundTint="#6C6666"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Register" />
         </LinearLayout>
 

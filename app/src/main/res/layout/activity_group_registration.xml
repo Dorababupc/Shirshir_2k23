@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/black"
     tools:context=".Registration.Group_Registration_Activity">
 
     <ScrollView
@@ -25,13 +25,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:gravity="center"
                 android:text="Event Name"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/Team_name_label"
                 android:layout_width="wrap_content"
                 android:textSize="15dp"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:padding="5dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:text="Team Name" />
@@ -41,12 +50,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter Team Name"
                 android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
             <TextView
                 android:id="@+id/name_label"
                 android:layout_width="wrap_content"
                 android:textSize="15dp"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:padding="5dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
                 android:text="Team leader Name" />
@@ -56,13 +76,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter Full Name"
                 android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/email_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:text="Email" />
 
@@ -71,13 +102,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter your email address"
                 android:inputType="textEmailAddress" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/phone_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:padding="5dp"
                 android:textColor="@color/black"
                 android:text="Phone" />
 
@@ -86,13 +128,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enetr Phone Number"
                 android:inputType="phone" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:padding="5dp"
                 android:text="Roll Number:" />
 
             <EditText
@@ -100,12 +153,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter Roll-No"
                 android:inputType="text|textNoSuggestions|textCapCharacters|textCapWords|textCapSentences|textAutoCorrect|textAutoComplete" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:layout_margin="3dp"
+                android:textStyle="bold"
+                android:padding="5dp"
                 android:text="College Name" />
 
             <EditText
@@ -113,13 +178,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
+                android:layout_margin="5dp"
                 android:hint="Enter College Name"
                 android:inputType="text" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:layout_margin="3dp"
+                android:padding="5dp"
                 android:textStyle="bold"
                 android:text="Year:" />
 
@@ -127,31 +202,52 @@
                 android:id="@+id/year_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:entries="@array/year_options" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:layout_margin="3dp"
                 android:textStyle="bold"
+                android:padding="5dp"
                 android:text="Department:" />
 
             <Spinner
                 android:id="@+id/department_spinner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:entries="@array/department_options" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:background="@drawable/reg_style_card"
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/black"
+                android:layout_margin="3dp"
                 android:textStyle="bold"
+                android:padding="5dp"
                 android:text="Program:" />
 
             <RadioGroup
                 android:id="@+id/program_radio_group"
                 android:layout_width="match_parent"
+                android:layout_margin="5dp"
                 android:outlineAmbientShadowColor="@color/black"
                 android:layout_height="wrap_content">
 
@@ -183,33 +279,46 @@
                     android:text="P.hd" />
 
             </RadioGroup>
+        </LinearLayout>
             <LinearLayout
                 android:id="@+id/team_members_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/reg_style_card"
+                    android:orientation="vertical">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="3dp"
+                    android:textStyle="bold"
+                    android:padding="5dp"
                     android:text="Team Members"/>
 
 
                    <ListView
                        android:id="@+id/team_members_list"
                        android:layout_width="match_parent"
-                       android:layout_height="300dp"/>
+                       android:layout_margin="5dp"
+                       android:layout_height="200dp"/>
+                </LinearLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/reg_style_card"
                     android:orientation="horizontal">
 
                     <EditText
                         android:id="@+id/team_member_edit_text"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="5dp"
                         android:layout_weight="1"
                         android:hint="Enter team member name"/>
 
@@ -217,6 +326,9 @@
                         android:id="@+id/add_team_member_button"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/white"
+                        android:backgroundTint="#6C6666"
+                        android:layout_margin="5dp"
                         android:text="Add"/>
 
                 </LinearLayout>
@@ -229,6 +341,8 @@
                 android:layout_width="wrap_content"
                 android:textColor="@color/white"
                 android:layout_height="wrap_content"
+                android:backgroundTint="#6C6666"
+                android:layout_gravity="center"
                 android:text="Register" />
 
 

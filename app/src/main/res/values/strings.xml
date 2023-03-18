@@ -15,5 +15,11 @@
         <item>Electronics and Communication</item>
         <item>Mechanical</item>
         <item>Electrical</item>
+        <item>Civil</item>
+        <item>Physics</item>
+        <item>Maths</item>
+        <item>Chemistry</item>
+        <item>HS</item>
+
     </string-array>
 </resources>
