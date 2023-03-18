@@ -79,7 +79,7 @@ public class TeamFragment extends Fragment {
         view = (RecyclerView) v.findViewById(R.id.recview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(v.getContext());
         view.setLayoutManager(layoutManager);
-        mbase= FirebaseDatabase.getInstance().getReference().child("Events");
+        mbase= FirebaseDatabase.getInstance("https://shishir-2k23-default-rtdb.asia-southeast1.firebasedatabase.app").getReference().child("Events");
         FirebaseRecyclerOptions<String> options
                 = new FirebaseRecyclerOptions.Builder<String>()
                 .setQuery(mbase,String.class)

@@ -31,10 +31,10 @@ public class TeamAdapterTeam extends RecyclerView.Adapter<HolderTeamTeam> {
         holder.name.setText(options.get(position).getName());
         Glide.with(holder.img.getContext()).load(options.get(position).getPurl()).into(holder.img);
         ModelTeamTeam m=options.get(position);
-        holder.contact.setOnClickListener(v -> {
-            Toast toast = Toast.makeText(holder.contact.getContext(),""+m.getContact(), Toast.LENGTH_LONG);
-            toast.show();
-        });
+//        holder.contact.setOnClickListener(v -> {
+//            Toast toast = Toast.makeText(holder.contact.getContext(),""+m.getContact(), Toast.LENGTH_LONG);
+//            toast.show();
+//        });
         holder.email.setOnClickListener(v -> {
             Toast toast = Toast.makeText(holder.email.getContext(),m.getEmail(), Toast.LENGTH_LONG);
             toast.show();

@@ -1,13 +1,12 @@
 package com.example.shishir_2k23.Team;
 
 public class ModelTeamTeam {
-    String email,purl,name,position;
-    Long contact;
+    String email,purl,name,position,contact;
     public ModelTeamTeam(){
 
     }
 
-    public ModelTeamTeam(Long contact,String email,String purl,String name,String position) {
+    public ModelTeamTeam(String contact,String email,String purl,String name,String position) {
         this.contact = contact;
         this.email=email;
 
@@ -23,7 +22,7 @@ public class ModelTeamTeam {
         return email;
     }
 
-    public Long getContact() {
+    public String getContact() {
         return contact;
     }
 
@@ -43,7 +42,7 @@ public class ModelTeamTeam {
         this.email = email;
     }
 
-    public void setContact(Long contact) {
+    public void setContact(String contact) {
         this.contact = contact;
     }
 

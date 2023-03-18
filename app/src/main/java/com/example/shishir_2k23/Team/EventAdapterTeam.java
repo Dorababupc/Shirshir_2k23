@@ -37,7 +37,9 @@ public class EventAdapterTeam extends FirebaseRecyclerAdapter<String,HolderEvent
         holder.eventName.setText(model);
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.teamMembers.getContext(), RecyclerView.VERTICAL,false);
         holder.teamMembers.setLayoutManager(layoutManager);
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
+//        FirebaseDatabase.getInstance("https://shishir-2k23-default-rtdb.asia-southeast1.firebasedatabase.app").setPersistenceEnabled(true);
+
+        FirebaseDatabase database = FirebaseDatabase.getInstance("https://shishir-2k23-default-rtdb.asia-southeast1.firebasedatabase.app");
         DatabaseReference ref = database.getReference(model);
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
