@@ -4,14 +4,191 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Shop.ShopFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/firstCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    android:elevation="9dp">
 
-    <TextView
-        android:id="@+id/shop_frag"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="26dp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:text="Shop Fragment" />
+                    <ImageView
+                        android:id="@+id/firstImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="500dp" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="90dp"
+                        android:layout_gravity="bottom">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hoodie"
+                            android:layout_alignParentLeft="true"
+                            android:id="@+id/firstName"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="1000"
+                            android:id="@+id/firstPrice"
+                            android:textStyle="bold"
+                            android:layout_alignParentRight="true" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/secondCard"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:elevation="9dp">
+
+                <ImageView
+                    android:id="@+id/secondImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="bottom">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Hoodie"
+                        android:layout_alignParentLeft="true"
+                        android:id="@+id/secondName"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:id="@+id/secondPrice"
+                        android:text="1000"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/thirdCard"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:elevation="9dp">
+
+                <ImageView
+                    android:id="@+id/thirdImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="bottom">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Hoodie"
+                        android:layout_alignParentLeft="true"
+                        android:id="@+id/thirdName"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="1000"
+                        android:id="@+id/thirdPrice"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fourthCard"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:elevation="9dp">
+
+                <ImageView
+                    android:id="@+id/fourthImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="bottom">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Hoodie"
+                        android:layout_alignParentLeft="true"
+                        android:id="@+id/fourthName"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="1000"
+                        android:id="@+id/fourthPrice"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/fifthCard"
+                android:layout_width="match_parent"
+                android:layout_height="600dp"
+                android:elevation="9dp">
+
+                <ImageView
+                    android:id="@+id/fifthImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="500dp" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="90dp"
+                    android:layout_gravity="bottom">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="Hoodie"
+                        android:layout_alignParentLeft="true"
+                        android:id="@+id/fifthName"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="1000"
+                        android:id="@+id/fifthPrice"
+                        android:textStyle="bold"
+                        android:layout_alignParentRight="true" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </FrameLayout>
