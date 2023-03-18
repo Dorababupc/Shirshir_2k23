@@ -2,4 +2,18 @@
     <string name="app_name">Shishir_2k23</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="year_prompt">Select year:</string>
+    <string-array name="year_options">
+        <item>First year</item>
+        <item>Second year</item>
+        <item>Third year</item>
+        <item>Fourth year</item>
+    </string-array>
+    <string name="department_prompt">Select department:</string>
+    <string-array name="department_options">
+        <item>Computer Science</item>
+        <item>Electronics and Communication</item>
+        <item>Mechanical</item>
+        <item>Electrical</item>
+    </string-array>
 </resources>
