@@ -1,5 +1,7 @@
 package com.example.shishir_2k23.Sponsors;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -40,7 +42,9 @@ public class AdapterSponsor extends FirebaseRecyclerAdapter<ModelSponsor,HolderS
         Glide.with(holder.img.getContext()).load(model.getLogo()).into(holder.img);
         ModelSponsor m=model;
         holder.img.setOnClickListener(view -> {
-            Toast.makeText(holder.img.getContext(),""+ model.getWebsite(),Toast.LENGTH_LONG);
+//            Toast.makeText(holder.img.getContext(),""+ m.getWebsite(),Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(m.getWebsite()));
+            holder.img.getContext().startActivity(intent);
         });
 
     }
@@ -50,5 +54,9 @@ public class AdapterSponsor extends FirebaseRecyclerAdapter<ModelSponsor,HolderS
     public HolderSponsor onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(parent.getContext()).inflate(R.layout.singlerow_sponsor,parent,false);
         return new HolderSponsor(view);
+    }
+
+    public FirebaseRecyclerOptions<ModelSponsor> getOptions() {
+        return options;
     }
 }

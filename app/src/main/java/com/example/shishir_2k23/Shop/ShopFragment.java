@@ -51,9 +51,9 @@ public class ShopFragment extends Fragment {
     private ImageView imageView1,imageView2,imageView3,imageView4,imageView5;
     private String[] imageUrls1 = {"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FHoodie%2FWhite%20hoodie%2Ffront.png?alt=media&token=116a7c4d-0483-495b-9a0b-448d82359d8e", "https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FHoodie%2FWhite%20hoodie%2Fback.png?alt=media&token=3d9c88a8-ff8a-48cb-9570-10ebef7cb604"};
     private String[] imageUrls2={"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FHoodie%2FBlack%20hoodie%2Ffront_b.png?alt=media&token=2b71713a-3e3f-4e4f-8f9d-2a42018243fe","https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FHoodie%2FBlack%20hoodie%2Fback_b.png?alt=media&token=3c6c96d1-d64b-4bb2-a8c9-67507e1ef4d1"};
-    private String[] imageUrls3={"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBlack%20T%20shirt%2Ffront_b_w.png?alt=media&token=7c0bd17e-f578-4c31-a0ec-6e0a1f3b32b2","https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBlack%20T%20shirt%2Fback_b_w.png?alt=media&token=45e588ad-ae3f-48f2-b693-d0f681401a0e"};
-    private String[] imageUrls4={"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FWhite%20T-Shirt%2Ffront_w.png?alt=media&token=aa78a05b-f9b9-4ce7-b208-bc21546d3a7e","https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FWhite%20T-Shirt%2Fback_w.png?alt=media&token=0bd18cfc-84cd-4bdb-bac2-c2cc0abf55cd"};
-    private String[] imageUrls5={"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBrugelerey%20T%20shirt%2Fwhite_b.png?alt=media&token=0c0746c4-d7fa-4be9-8300-6f7fec8ed5b2","https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBrugelerey%20T%20shirt%2Fback_B.png?alt=media&token=b2a0233f-6c7d-4605-8482-b93d9db26604"};
+    private String[] imageUrls3={"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBlack%20T%20shirt%2Ffront_b_w.png?alt=media&token=6766ad95-ef0f-4501-8fbd-51971fe716f7","https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBlack%20T%20shirt%2Fback_b_w.png?alt=media&token=50ce756a-cf5e-4017-8330-c68c47a62141"};
+    private String[] imageUrls4={"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBrugelerey%20T%20shirt%2Fwhite_b.png?alt=media&token=87905954-ffa6-4b2b-85a0-512163629dc4","https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FBrugelerey%20T%20shirt%2Fback_B.png?alt=media&token=c19d32d3-e4f4-4a69-849f-6c1677684b43"};
+    private String[] imageUrls5={"https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FWhite%20T-Shirt%2Ffront_w.png?alt=media&token=9b24d6a5-3f8a-4387-9f46-032252c660d2","https://firebasestorage.googleapis.com/v0/b/shishir-2k23.appspot.com/o/Merchandise%2FT-Shirt%2FWhite%20T-Shirt%2Fback_w.png?alt=media&token=5c01b7e4-8851-4c17-9754-881b2acb1fd3"};
     private int currentImageIndex = 0,currentImageIndex2=1;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -115,20 +115,20 @@ public class ShopFragment extends Fragment {
                 Glide.with(v.getContext())
                         .load(imageUrls1[currentImageIndex])
                         .into(imageView1);
-                Glide.with(v.getContext()).load(imageUrls2[currentImageIndex2]).into(imageView2);
+                Glide.with(v.getContext()).load(imageUrls2[currentImageIndex]).into(imageView2);
                 Glide.with(v.getContext()).load(imageUrls3[currentImageIndex]).into(imageView3);
-                Glide.with(v.getContext()).load(imageUrls4[currentImageIndex2]).into(imageView4);
+                Glide.with(v.getContext()).load(imageUrls4[currentImageIndex]).into(imageView4);
                 Glide.with(v.getContext()).load(imageUrls5[currentImageIndex]).into(imageView5);
                 // Increment the index and wrap around if necessary
                 currentImageIndex = (currentImageIndex + 1) % imageUrls1.length;
 
                 // Schedule the next change after 3 seconds
-                handler.postDelayed(this, 3000);
+                handler.postDelayed(this, 4000);
             }
         };
 
         // Start the initial change after 3 seconds
-        handler.postDelayed(runnable, 3000);
+        handler.postDelayed(runnable, 1000);
     }
     @Override
     public void onDestroy() {

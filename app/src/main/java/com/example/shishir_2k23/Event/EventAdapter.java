@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -76,7 +77,15 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 Log.e(TAG, "Error fetching collection size", e);
             }
         });
+        holder.eventRule.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(model.getPdfUrl()));
+                holder.eventRule.getContext().startActivity(intent);
 
+            }
+        });
 
         holder.eventRegisterTV.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -180,7 +189,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             eventNameTV = itemView.findViewById(R.id.eventName);
 
             eventRegisterTV = itemView.findViewById(R.id.register_id);
-            eventRule = itemView.findViewById(R.id.team_id);
+            eventRule = itemView.findViewById(R.id.rule_id);
             eventTeam = itemView.findViewById(R.id.team_id);
             countRegisterId = itemView.findViewById(R.id.count_register_id);
 

@@ -1,5 +1,7 @@
 package com.example.shishir_2k23.Team;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,14 +33,25 @@ public class TeamAdapterTeam extends RecyclerView.Adapter<HolderTeamTeam> {
         holder.name.setText(options.get(position).getName());
         Glide.with(holder.img.getContext()).load(options.get(position).getPurl()).into(holder.img);
         ModelTeamTeam m=options.get(position);
-//        holder.contact.setOnClickListener(v -> {
-//            Toast toast = Toast.makeText(holder.contact.getContext(),""+m.getContact(), Toast.LENGTH_LONG);
-//            toast.show();
-//        });
-        holder.email.setOnClickListener(v -> {
-            Toast toast = Toast.makeText(holder.email.getContext(),m.getEmail(), Toast.LENGTH_LONG);
-            toast.show();
+        holder.contact.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + m.getContact()));
+            holder.contact.getContext().startActivity(intent);
         });
+        holder.email.setOnClickListener(v -> {
+//            Toast toast = Toast.makeText(holder.email.getContext(),m.getEmail(), Toast.LENGTH_LONG);
+//            toast.show();
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", m.getEmail(), null));
+            intent.setData(Uri.parse("mailto:"));
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[] { m.getEmail() });
+            holder.email.getContext().startActivity(intent);
+
+        });
+//        holder.contact.onClickListener(v -> {
+//
+//        });
+
+
 
     }
 

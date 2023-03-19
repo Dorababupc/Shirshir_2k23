@@ -62,7 +62,7 @@ public class GalleryActivity extends AppCompatActivity {
                     // below line is use for setting our
                     // image url for our modal class.
                     model.setImgUrl(galleryDataModel.getImgUrl());
-
+//                    model.setLikes(galleryDataModel.getLikes());
                     // after that we are adding that
                     // data inside our array list.
                     galleryDataArrayList.add(model);

@@ -123,7 +123,7 @@ public class EventFragment extends Fragment {
                     model.setEvent_name(eventModel.getEvent_name());
                     model.setImgUrl(eventModel.getImgUrl());
                     model.setEvent_type(eventModel.getEvent_type());
-
+                    model.setPdfUrl(eventModel.getPdfUrl());
                     // after that we are adding that
                     // data inside our array list.
                     eventModelArrayList.add(model);
