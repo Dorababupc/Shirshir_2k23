@@ -38,6 +38,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
     private final Context context;
     private final ArrayList<EventModel> eventModelArrayList;
+    int total_register;
 
     public EventAdapter(Context context, ArrayList<EventModel> eventModelArrayList){
         this.context = context;
@@ -61,15 +62,31 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         String event_type = model.getEvent_type().toString();
       //  Log.d("event_type",model.getEvent_type());
 //        holder.countRegisterId.setText(""+model.getRegistration_count());
+        //Defining Warning popup registration
+
         Picasso.get().load(model.getImgUrl()).into(holder.eventIV);
         //holder.eventIV.setImageResource(model.getEvent_image());
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         CollectionReference collectionRef = db.collection(registerCount);
+        CollectionReference collectionRefGroup = db.collection(registerCount+"_Group");
 
         collectionRef.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                int size = queryDocumentSnapshots.size();
+                total_register = queryDocumentSnapshots.size();
+               // holder.countRegisterId.setText("" + size);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Error fetching collection size", e);
+            }
+        });
+
+        collectionRefGroup.get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                int size = queryDocumentSnapshots.size()+total_register;
                 holder.countRegisterId.setText("" + size);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -78,6 +95,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 Log.e(TAG, "Error fetching collection size", e);
             }
         });
+
         holder.eventRule.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -91,49 +109,152 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.eventRegisterTV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (model.getEvent_type().equals("solo")){
 
-                    Intent intent = new Intent(context, EventRegisterActivity.class);
-                    intent.putExtra("event_name", model.getEvent_name());
-                    context.startActivity(intent);
+                if (model.getEvent_type().equals("solo")){
+                    View warningpopupView = LayoutInflater.from(context).inflate(R.layout.warning_popup_screen, null);
+                    ImageView cancelworningpopup =  warningpopupView.findViewById(R.id.warning_icon);
+                    PopupWindow warningpopupWindow = new PopupWindow(warningpopupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    cancelworningpopup.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            warningpopupWindow.dismiss();
+                            Intent intent = new Intent(context, EventRegisterActivity.class);
+                            intent.putExtra("event_name", model.getEvent_name());
+                            context.startActivity(intent);
+                        }
+                    });
+                    warningpopupWindow.setOutsideTouchable(true);
+                    warningpopupWindow.setFocusable(true);
+                    warningpopupWindow.setClippingEnabled(false);
+                    warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                    warningpopupWindow.setHeight(600);
+                    //Set the background of the PopupWindow
+                    //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    //Show the PopupWindow at the center of the screen
+                    warningpopupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                    //Dismiss the PopupWindow on outside touch
+                    warningpopupWindow.setOutsideTouchable(true);
+                    warningpopupWindow.setFocusable(true);
+                    warningpopupWindow.setTouchable(true);
+                    //Show the PopupWindow
+                    warningpopupWindow.showAsDropDown(view);
+
+
                 } else if (model.getEvent_type().equals("duet")) {
-                    Intent intent = new Intent(context, Group_Registration_Activity.class);
-                    intent.putExtra("event_name", model.getEvent_name());
-                    context.startActivity(intent);
+                    View warningpopupView = LayoutInflater.from(context).inflate(R.layout.warning_popup_screen, null);
+                    ImageView cancelworningpopup =  warningpopupView.findViewById(R.id.warning_icon);
+                    PopupWindow warningpopupWindow = new PopupWindow(warningpopupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                    cancelworningpopup.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            warningpopupWindow.dismiss();
+                            Intent intent = new Intent(context, Group_Registration_Activity.class);
+                            intent.putExtra("event_name", model.getEvent_name());
+                            context.startActivity(intent);
+                        }
+                    });
+                    warningpopupWindow.setOutsideTouchable(true);
+                    warningpopupWindow.setFocusable(true);
+                    warningpopupWindow.setClippingEnabled(false);
+                    warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                    warningpopupWindow.setHeight(600);
+                    //Set the background of the PopupWindow
+                    //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    //Show the PopupWindow at the center of the screen
+                    warningpopupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                    //Dismiss the PopupWindow on outside touch
+                    warningpopupWindow.setOutsideTouchable(true);
+                    warningpopupWindow.setFocusable(true);
+                    warningpopupWindow.setTouchable(true);
+                    //Show the PopupWindow
+                    warningpopupWindow.showAsDropDown(view);
+
+
 
                 }
                 else if (model.getEvent_type().equals("both")){
-                    Toast.makeText(context, "This for both", Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(context, "This for both", Toast.LENGTH_SHORT).show();
                     View popupView = LayoutInflater.from(context).inflate(R.layout.event_type_popup_screen, null);
 
                     TextView solo = popupView.findViewById(R.id.solo_reg);
                     TextView group = popupView.findViewById(R.id.group_reg);
-                    ImageView cancel = popupView.findViewById(R.id.cancel_popup);
+                     ImageView cancel = popupView.findViewById(R.id.cancel_popup);
                     //Create the PopupWindow object
                     PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     //Set the click listener on the TextView
                     solo.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
-                            //Start the new activity
-                            Intent intent = new Intent(context, EventRegisterActivity.class);
-                            intent.putExtra("event_name", model.getEvent_name());
-                            context.startActivity(intent);
-
                             //Dismiss the PopupWindow
                             popupWindow.dismiss();
+                            View warningpopupView = LayoutInflater.from(context).inflate(R.layout.warning_popup_screen, null);
+                            ImageView cancelworningpopup =  warningpopupView.findViewById(R.id.warning_icon);
+                            PopupWindow warningpopupWindow = new PopupWindow(warningpopupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            cancelworningpopup.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    warningpopupWindow.dismiss();
+                                    Intent intent = new Intent(context, EventRegisterActivity.class);
+                                    intent.putExtra("event_name", model.getEvent_name());
+                                    context.startActivity(intent);
+                                }
+                            });
+                            warningpopupWindow.setOutsideTouchable(true);
+                            warningpopupWindow.setFocusable(true);
+                            warningpopupWindow.setClippingEnabled(false);
+                            warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                            warningpopupWindow.setHeight(600);
+                            //Set the background of the PopupWindow
+                            //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            //Show the PopupWindow at the center of the screen
+                            warningpopupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                            //Dismiss the PopupWindow on outside touch
+                            warningpopupWindow.setOutsideTouchable(true);
+                            warningpopupWindow.setFocusable(true);
+                            warningpopupWindow.setTouchable(true);
+                            //Show the PopupWindow
+                            warningpopupWindow.showAsDropDown(view);
                         }
                     });
                     group.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View v) {
                             //Start the new activity
-                            Intent intent = new Intent(context, Group_Registration_Activity.class);
-                            intent.putExtra("event_name", model.getEvent_name());
-                            context.startActivity(intent);
+
 
                             //Dismiss the PopupWindow
                             popupWindow.dismiss();
+                            View warningpopupView = LayoutInflater.from(context).inflate(R.layout.warning_popup_screen, null);
+                            ImageView cancelworningpopup =  warningpopupView.findViewById(R.id.warning_icon);
+                            PopupWindow warningpopupWindow = new PopupWindow(warningpopupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            cancelworningpopup.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    warningpopupWindow.dismiss();
+                                    Intent intent = new Intent(context, Group_Registration_Activity.class);
+                                    intent.putExtra("event_name", model.getEvent_name());
+                                    context.startActivity(intent);
+                                }
+                            });
+                            warningpopupWindow.setOutsideTouchable(true);
+                            warningpopupWindow.setFocusable(true);
+                            warningpopupWindow.setClippingEnabled(false);
+                            warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                            warningpopupWindow.setHeight(600);
+                            //Set the background of the PopupWindow
+                            //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                            //Show the PopupWindow at the center of the screen
+                            warningpopupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+
+                            //Dismiss the PopupWindow on outside touch
+                            warningpopupWindow.setOutsideTouchable(true);
+                            warningpopupWindow.setFocusable(true);
+                            warningpopupWindow.setTouchable(true);
+                            //Show the PopupWindow
+                            warningpopupWindow.showAsDropDown(view);
                         }
                     });
 

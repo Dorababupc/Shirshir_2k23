@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="330dp"
-    android:layout_height="200dp"
+    android:layout_height="250dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="10dp"
     app:cardElevation="10dp">
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="10dp"
+        android:orientation="vertical"
         android:background="@drawable/gallery_card_view">
         <WebView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="200dp"
             android:id="@+id/youtube_view">
-
         </WebView>
-    </RelativeLayout>
+        <ImageView
+            android:id="@+id/youtube_app"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/ic_arrow_right"/>
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

@@ -9,8 +9,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="10dp"
+        android:background="@drawable/reg_style_card"
         android:orientation="vertical">
+
         <ImageView
             android:layout_width="35dp"
             android:id="@+id/cancel_popup"
@@ -20,18 +21,29 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
+            android:textStyle="bold"
+            android:layout_margin="5dp"
+            android:textSize="20dp"
+            android:text="Choose one option"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:textSize="30dp"
             android:textColor="@color/white"
             android:textStyle="bold"
+            android:gravity="center"
+            android:background="#323030"
             android:id="@+id/solo_reg"
             android:text="Solo"/>
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="30sp"
-            android:layout_margin="15dp"
+            android:layout_margin="5dp"
             android:textColor="@color/white"
+            android:gravity="center"
+            android:background="#323030"
             android:textStyle="bold"
             android:id="@+id/group_reg"
             android:text="Group"/>
