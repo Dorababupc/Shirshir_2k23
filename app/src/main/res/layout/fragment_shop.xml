@@ -12,39 +12,47 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                app:cardUseCompatPadding="true"
-                app:cardCornerRadius="12dp"
-                android:layout_margin="10dp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:elevation="20dp">
+                android:layout_height="50dp"
+                android:layout_margin="10dp">
                 <TextView
                     android:text="New Merchandise will be available soon for display and booking"
-                    android:textAppearance="@android:style/TextAppearance.Large"
                     android:layout_width="wrap_content"
+                    android:backgroundTint="@color/black"
+                    android:textColor="@color/white"
                     android:maxLines="2"
                     android:layout_height="wrap_content">
                 </TextView>
-            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+
                 <androidx.cardview.widget.CardView
                     app:cardUseCompatPadding="true"
                     app:cardCornerRadius="12dp"
                     android:layout_margin="10dp"
                     android:id="@+id/firstCard"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp"
+                    android:layout_height="wrap_content"
                     android:elevation="9dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/reg_style_card"
+                        android:orientation="vertical">
+
+
 
                     <ImageView
                         android:id="@+id/firstImage"
+                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="500dp" />
+                        android:layout_height="420dp" />
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:layout_height="90dp"
-                        android:layout_gravity="bottom"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
                         android:background="#00FFFFFF">
 
                         <TextView
@@ -53,7 +61,6 @@
                             android:layout_marginLeft="15dp"
                             android:gravity="center"
                             android:text="Hoodie"
-                            android:layout_alignParentLeft="true"
                             android:id="@+id/firstName"
                             android:textAppearance="@android:style/TextAppearance.Large"
                             android:textStyle="bold" />
@@ -63,13 +70,14 @@
                             android:layout_height="match_parent"
                             android:textAppearance="@android:style/TextAppearance.Large"
                             android:gravity="center"
-                            android:text="1000"
-                            android:layout_marginRight="15dp"
+                            android:text="Rs.1000"
+                            android:layout_marginStart="170dp"
                             android:id="@+id/firstPrice"
                             android:textStyle="bold"
                             android:layout_alignParentRight="true" />
 
-                    </RelativeLayout>
+                    </LinearLayout>
+                    </LinearLayout>
 
                 </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -78,24 +86,33 @@
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="10dp"
-                android:layout_height="600dp"
+                android:layout_height="wrap_content"
                 android:elevation="9dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/reg_style_card"
+                    android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/secondImage"
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
-                    android:layout_height="500dp" />
+                    android:layout_height="420dp" />
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_gravity="bottom">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
+                        android:background="#00FFFFFF">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Hoodie"
-                        android:layout_alignParentLeft="true"
+                        android:textAppearance="@android:style/TextAppearance.Large"
+                        android:layout_marginLeft="15dp"
                         android:id="@+id/secondName"
                         android:textStyle="bold" />
 
@@ -103,11 +120,14 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:id="@+id/secondPrice"
-                        android:text="1000"
+                        android:textAppearance="@android:style/TextAppearance.Large"
+                        android:text="Rs.1000"
                         android:textStyle="bold"
+                        android:layout_marginStart="170dp"
                         android:layout_alignParentRight="true" />
 
-                </RelativeLayout>
+                    </LinearLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
@@ -116,114 +136,153 @@
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="10dp"
-                android:layout_height="600dp"
+                android:layout_height="wrap_content"
                 android:elevation="9dp">
-
-                <ImageView
-                    android:id="@+id/thirdImage"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="500dp" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/reg_style_card"
+                    android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_gravity="bottom">
+                    <ImageView
+                        android:id="@+id/thirdImage"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="420dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Hoodie"
-                        android:layout_alignParentLeft="true"
-                        android:id="@+id/thirdName"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
+                        android:background="#00FFFFFF">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="1000"
-                        android:id="@+id/thirdPrice"
-                        android:textStyle="bold"
-                        android:layout_alignParentRight="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hoodie"
+                            android:textAppearance="@android:style/TextAppearance.Large"
+                            android:layout_marginLeft="15dp"
+                            android:id="@+id/thirdName"
+                            android:textStyle="bold" />
 
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/thirdPrice"
+                            android:textAppearance="@android:style/TextAppearance.Large"
+                            android:text="Rs.1000"
+                            android:textStyle="bold"
+                            android:layout_marginStart="170dp"
+                            android:layout_alignParentRight="true" />
+
+                    </LinearLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/fourthCard"
+                android:layout_width="match_parent"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="10dp"
-                android:layout_width="match_parent"
-                android:layout_height="600dp"
+                android:layout_height="wrap_content"
                 android:elevation="9dp">
-
-                <ImageView
-                    android:id="@+id/fourthImage"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="500dp" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/reg_style_card"
+                    android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_gravity="bottom">
+                    <ImageView
+                        android:id="@+id/fourthImage"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="420dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Hoodie"
-                        android:layout_alignParentLeft="true"
-                        android:id="@+id/fourthName"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
+                        android:background="#00FFFFFF">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="1000"
-                        android:id="@+id/fourthPrice"
-                        android:textStyle="bold"
-                        android:layout_alignParentRight="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hoodie"
+                            android:textAppearance="@android:style/TextAppearance.Large"
+                            android:layout_marginLeft="15dp"
+                            android:id="@+id/fourthName"
+                            android:textStyle="bold" />
 
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/fourthPrice"
+                            android:textAppearance="@android:style/TextAppearance.Large"
+                            android:text="Rs.1000"
+                            android:textStyle="bold"
+                            android:layout_marginStart="170dp"
+                            android:layout_alignParentRight="true" />
+
+                    </LinearLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
             <androidx.cardview.widget.CardView
                 android:id="@+id/fifthCard"
                 android:layout_width="match_parent"
-                android:layout_height="600dp"
                 app:cardUseCompatPadding="true"
                 app:cardCornerRadius="12dp"
                 android:layout_margin="10dp"
+                android:layout_height="wrap_content"
                 android:elevation="9dp">
-
-                <ImageView
-                    android:id="@+id/fifthImage"
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="500dp" />
+                    android:layout_height="match_parent"
+                    android:background="@drawable/reg_style_card"
+                    android:orientation="vertical">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="90dp"
-                    android:layout_gravity="bottom">
+                    <ImageView
+                        android:id="@+id/fifthImage"
+                        android:layout_margin="10dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="420dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="Hoodie"
-                        android:layout_alignParentLeft="true"
-                        android:id="@+id/fifthName"
-                        android:textStyle="bold" />
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="5dp"
+                        android:background="#00FFFFFF">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:text="1000"
-                        android:id="@+id/fifthPrice"
-                        android:textStyle="bold"
-                        android:layout_alignParentRight="true" />
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="Hoodie"
+                            android:textAppearance="@android:style/TextAppearance.Large"
+                            android:layout_marginLeft="15dp"
+                            android:id="@+id/fifthName"
+                            android:textStyle="bold" />
 
-                </RelativeLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:id="@+id/fifthPrice"
+                            android:textAppearance="@android:style/TextAppearance.Large"
+                            android:text="Rs.1000"
+                            android:textStyle="bold"
+                            android:layout_marginStart="170dp"
+                            android:layout_alignParentRight="true" />
+
+                    </LinearLayout>
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
+
+
+
 
         </LinearLayout>
 

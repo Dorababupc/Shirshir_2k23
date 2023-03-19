@@ -64,10 +64,10 @@ public class HomeFragment extends Fragment {
     private YoutubeAdapter youtubeAdapter;
     private ProgressBar galleryprogressBar, sliderprogressBar, youtubeprogressBar;
     private CountDownTimer countDownTimer;
-    private TextView countdownTextView;
+    private TextView countdownTextView,more_gallery;
 
     //Social Media
-    ImageView ivFacebook, ivInstagram, ivLinkedIn, ivTwitter,ivGallery;
+    ImageView ivFacebook, ivInstagram, ivLinkedIn, ivTwitter;
 
     private String mParam1;
     private String mParam2;
@@ -127,7 +127,7 @@ public class HomeFragment extends Fragment {
         sliderprogressBar.setVisibility(View.VISIBLE);
        // youtubeprogressBar.setVisibility(View.VISIBLE);
         db = FirebaseFirestore.getInstance();
-        ivGallery = view.findViewById(R.id.right_arrow);
+        more_gallery = view.findViewById(R.id.more_gallery);
 
         //This Section is for countDown Timer
         countdownTextView = view.findViewById(R.id.countdown_timer);
@@ -214,7 +214,7 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        ivGallery.setOnClickListener(new View.OnClickListener() {
+        more_gallery.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(view.getContext(), GalleryActivity.class);

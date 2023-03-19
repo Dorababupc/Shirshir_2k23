@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:padding="5dp"
+            android:layout_marginBottom="25dp"
             android:orientation="vertical">
 
             <TextView
@@ -100,7 +101,7 @@
                 android:layout_height="wrap_content"
                 android:textColorHint="@color/black"
                 android:layout_margin="5dp"
-                android:hint="Enetr Phone Number"
+                android:hint="Enter Phone Number"
                 android:inputType="phone" />
         </LinearLayout>
         <LinearLayout
@@ -252,6 +253,7 @@
                 android:textColor="@color/white"
                 android:backgroundTint="#6C6666"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_gravity="center"
                 android:text="Register" />
         </LinearLayout>
