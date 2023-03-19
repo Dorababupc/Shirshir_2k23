@@ -138,20 +138,20 @@
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="30dp"
                     android:id="@+id/instagram"
                     android:src="@drawable/instagram"/>
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:id="@+id/linkdIn"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="30dp"
                     android:src="@drawable/linkedin"/>
                 <ImageView
                     android:layout_width="48dp"
                     android:layout_height="48dp"
                     android:id="@+id/twitter"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="30dp"
                     android:src="@drawable/twitter"/>
 
             </LinearLayout>

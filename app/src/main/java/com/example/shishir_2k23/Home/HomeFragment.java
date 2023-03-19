@@ -205,12 +205,32 @@ public class HomeFragment extends Fragment {
         ivFacebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String sAppLink = "fb://page/237564710351658";
-                String sPackage = "com.gacebook.katana";
-                String sWebLink = "https://www.facebook.com/12H1rdeveloper";
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.facebook.com/shishir.nitm?mibextid=ZbWKwL"));
+                // Replace "https://www.facebook.com/" with the URL of the user's Facebook profile if you want to link to a specific profile.
+                startActivity(intent);
+            }
+        });
+        ivInstagram.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://instagram.com/shishir_nitm?igshid=YmMyMTA2M2Y="));
+                // Replace "https://www.facebook.com/" with the URL of the user's Facebook profile if you want to link to a specific profile.
+                startActivity(intent);
+            }
+        });
+        ivTwitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/shishir_nitm?s=09"));
+                // Replace "https://www.facebook.com/" with the URL of the user's Facebook profile if you want to link to a specific profile.
+                startActivity(intent);
+            }
+        });
 
-                //Creating Method
-                openLink(sAppLink,sPackage,sWebLink);
+        ivLinkedIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getContext(), "Coming Soon", Toast.LENGTH_SHORT).show();
             }
         });
 
