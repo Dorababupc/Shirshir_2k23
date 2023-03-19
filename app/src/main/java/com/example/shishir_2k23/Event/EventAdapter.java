@@ -107,6 +107,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
                     TextView solo = popupView.findViewById(R.id.solo_reg);
                     TextView group = popupView.findViewById(R.id.group_reg);
+                    ImageView cancel = popupView.findViewById(R.id.cancel_popup);
                     //Create the PopupWindow object
                     PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
                     //Set the click listener on the TextView
@@ -135,11 +136,21 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                         }
                     });
 
+                    cancel.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            popupWindow.dismiss();
+                        }
+                    });
 
+
+                    popupWindow.setOutsideTouchable(true);
+                    popupWindow.setFocusable(true);
+                    popupWindow.setClippingEnabled(false);
                     popupWindow.setWidth(800); // Set the width of the popup window to 800 pixels
-                    popupWindow.setHeight(500);
+                    popupWindow.setHeight(600);
                     //Set the background of the PopupWindow
-                    popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     //Show the PopupWindow at the center of the screen
                     popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
 
@@ -153,6 +164,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
             }
         });
+
 
 
 
