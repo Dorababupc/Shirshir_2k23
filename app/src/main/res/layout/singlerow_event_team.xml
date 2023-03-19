@@ -2,22 +2,32 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_margin="5dp"
-    android:padding="3dp"
+    android:gravity="center"
+    android:background="@drawable/reg_style_card"
     android:id="@+id/childrecview"
+    android:layout_margin="10dp"
     android:layout_height="wrap_content">
     <TextView
         android:id="@+id/eventNameTextView"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:textSize="20dp"
+        android:padding="5dp"
+        android:textSize="25dp"
         android:text="Team Name"
+        android:gravity="center_horizontal"
         android:layout_height="wrap_content"/>
+    <ProgressBar
+        android:id="@+id/team_progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/teamMembersRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 
 </LinearLayout>
