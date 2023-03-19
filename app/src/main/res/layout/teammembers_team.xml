@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="120dp"
+    android:layout_margin="5dp"
+    android:padding="5dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    app:cardMaxElevation="15dp"
     android:elevation="10dp">
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="3dp"
+        android:background="@drawable/gallery_card_view">
         <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:id="@+id/member_image"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            android:layout_margin="10dp"
             app:civ_border_width="2dp"
             app:civ_border_color="#FF000000"/>
         <TextView
@@ -20,6 +28,7 @@
             android:gravity="center_vertical"
             android:textStyle="bold"
             android:text="Dorababu Arigi"
+            android:padding="3dp"
             android:layout_toRightOf="@id/member_image"
             android:id="@+id/member_name"
             android:layout_marginLeft="30dp"/>
@@ -37,11 +46,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="4dp"
             android:layout_toRightOf="@id/member_image"
             android:layout_below="@id/member_position">
             <ImageView
                 android:layout_width="0dp"
                 android:layout_weight="1"
+                android:layout_margin="3dp"
                 android:layout_height="wrap_content"
                 android:src="@drawable/ic_baseline_call_24"
                 android:id="@+id/member_contact"
@@ -50,6 +61,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_margin="3dp"
                 android:layout_gravity="center"
                 android:id="@+id/member_email"
                 android:src="@drawable/ic_baseline_email_24"/>

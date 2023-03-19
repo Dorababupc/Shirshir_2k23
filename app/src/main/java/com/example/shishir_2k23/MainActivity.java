@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     ActivityMainBinding binding;
     BottomNavigationView bottomNavigationView;
+    //private FirebaseMessaging fFirebaseMessaging;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +41,21 @@ public class MainActivity extends AppCompatActivity {
 
 
         replaceFragment(new HomeFragment());
+
+//        Bundle extras = getIntent().getExtras();
+//        if (extras != null) {
+//            String someValue = extras.getString("someKey"); // extract any necessary data
+//
+//            // create a new fragment instance with any necessary data
+//            EventFragment eventFragment = EventFragment.newInstance(someValue);
+//
+//            // start a new fragment transaction and display the fragment
+//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//            fragmentTransaction.replace(R.id.frame_layout, eventFragment);
+//            fragmentTransaction.addToBackStack(null);
+//            fragmentTransaction.commit();
+//        }
+
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
 
             switch (item.getItemId()){
