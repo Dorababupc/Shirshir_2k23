@@ -24,17 +24,8 @@
         <activity
             android:name=".EventRegisterActivity"
             android:exported="false" />
-        <activity
-            android:name=".SplashScreenActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-    <service
+        <service
         android:name=".MyFirebaseMessagingService"
         android:exported="false">
         <intent-filter>
