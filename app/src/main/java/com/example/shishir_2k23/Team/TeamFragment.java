@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +27,7 @@ public class TeamFragment extends Fragment {
     RecyclerView view;
     EventAdapterTeam myAdapter;
     DatabaseReference mbase;
+    Parcelable recyclerViewState;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -65,7 +67,14 @@ public class TeamFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
 
+        // Save the state of the RecyclerView
+        recyclerViewState = view.getLayoutManager().onSaveInstanceState();
+        outState.putParcelable("recyclerViewState", recyclerViewState);
+    }
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -76,6 +85,9 @@ public class TeamFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View v, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        if (savedInstanceState != null) {
+            recyclerViewState = savedInstanceState.getParcelable("recyclerViewState");
+        }
         view = (RecyclerView) v.findViewById(R.id.recview);
         LinearLayoutManager layoutManager = new LinearLayoutManager(v.getContext());
         view.setLayoutManager(layoutManager);
@@ -92,6 +104,9 @@ public class TeamFragment extends Fragment {
     public void onStart() {
         super.onStart();
         myAdapter.startListening();
+        if (recyclerViewState != null) {
+            view.getLayoutManager().onRestoreInstanceState(recyclerViewState);
+        }
     }
 
     @Override
@@ -99,5 +114,6 @@ public class TeamFragment extends Fragment {
         super.onStop();
         myAdapter.stopListening();
     }
+
 
 }

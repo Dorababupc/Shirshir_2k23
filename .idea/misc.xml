@@ -3,8 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/activity_gallery.xml" value="0.25" />
         <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/activity_main.xml" value="0.25" />
-        <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/fragment_shop.xml" value="0.25" />
+        <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/event_card_item.xml" value="0.25" />
+        <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/fragment_event.xml" value="0.25" />
+        <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/fragment_shop.xml" value="0.24390243902439024" />
         <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/fragment_sponsors.xml" value="0.25" />
         <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/fragment_team.xml" value="0.25" />
         <entry key="..\:/Users/Dorababu Arigi/AndroidStudioProjects/Shirshir_2k23/app/src/main/res/layout/shopitems_shop.xml" value="0.25" />
