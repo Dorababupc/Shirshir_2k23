@@ -1,9 +1,11 @@
 package com.example.shishir_2k23.Team;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -24,11 +26,16 @@ public class EventAdapterTeam extends FirebaseRecyclerAdapter<String,HolderEvent
     FirebaseRecyclerOptions<String> options;
     DatabaseReference mbase;
     TeamAdapterTeam adapter;
+    //private ProgressBar progressBar;
+
     Context context;
     public EventAdapterTeam(@NonNull FirebaseRecyclerOptions<String> options,Context context) {
         super(options);
         this.options=options;
         this.context=context;
+//        progressBar = ((Activity) context).findViewById(R.id.team_progressBar);
+//        progressBar.setVisibility(View.VISIBLE);
+
     }
 
 
@@ -37,6 +44,7 @@ public class EventAdapterTeam extends FirebaseRecyclerAdapter<String,HolderEvent
         holder.eventName.setText(model);
         LinearLayoutManager layoutManager = new LinearLayoutManager(holder.teamMembers.getContext(), RecyclerView.VERTICAL,false);
         holder.teamMembers.setLayoutManager(layoutManager);
+        holder.progressBar.setVisibility(View.VISIBLE);
 //        FirebaseDatabase.getInstance("https://shishir-2k23-default-rtdb.asia-southeast1.firebasedatabase.app").setPersistenceEnabled(true);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance("https://shishir-2k23-default-rtdb.asia-southeast1.firebasedatabase.app");
@@ -45,6 +53,8 @@ public class EventAdapterTeam extends FirebaseRecyclerAdapter<String,HolderEvent
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                holder.progressBar.setVisibility(View.GONE);
+
                 ArrayList<ModelTeamTeam> dataArray = new ArrayList<>();
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     ModelTeamTeam data = ds.getValue(ModelTeamTeam.class);
@@ -57,6 +67,8 @@ public class EventAdapterTeam extends FirebaseRecyclerAdapter<String,HolderEvent
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // Handle database error
+                holder.progressBar.setVisibility(View.GONE);
+
             }
         });
 
