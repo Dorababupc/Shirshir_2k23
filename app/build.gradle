@@ -1,13 +1,15 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
+     //id 'com.google.gms.google-services'
 }
 
 android {
+    namespace "com.nitmeghalaya.shishir_2k23"
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.shishir_2k23"
+        applicationId "com.nitmeghalaya.shishir_2k23"
         minSdk 21
         targetSdk 33
         versionCode 1
