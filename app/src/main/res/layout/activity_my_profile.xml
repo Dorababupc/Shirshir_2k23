@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MyProfileActivity">
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_margin="20dp"
+       android:background="@drawable/reg_style_card"
+       android:orientation="vertical">
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="My Profile"
+           android:layout_gravity="center"
+           android:textSize="25dp"/>
+       <de.hdodenhof.circleimageview.CircleImageView
+           xmlns:app="http://schemas.android.com/apk/res-auto"
+           android:id="@+id/profile_image"
+           android:layout_width="136dp"
+           android:layout_height="136dp"
+           android:layout_margin="10dp"
+           android:src="@drawable/one"
+           android:layout_gravity="center_horizontal"
+           app:civ_border_width="3dp"
+           app:civ_border_color="#EDEBEB"/>
+   </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/reg_style_card"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textStyle="bold"
+            android:justificationMode="inter_word"
+            android:text="Best Images will be selected for 'photo of the day section'"
+            android:textSize="18dp"/>
+        <ImageView
+            android:layout_width="330dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/one"
+            android:id="@+id/uploaded_image"/>
+       <LinearLayout
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_margin="10dp"
+           android:layout_gravity="center_horizontal"
+           android:orientation="horizontal">
+           <ImageView
+               android:layout_width="50dp"
+               android:layout_height="50dp"
+               android:layout_margin="5dp"
+               android:id="@+id/choose_image"
+               android:src="@drawable/upload_iamge"/>
+           <Button
+               android:id="@+id/upload_image"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginStart="30dp"
+               android:text="Upload"/>
+       </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -25,6 +25,8 @@ import com.nitmeghalaya.shishir_2k23.Registration.Group_Registration_Activity;
 import com.nitmeghalaya.shishir_2k23.Team.TeamFragment;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
@@ -49,6 +51,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         this.context = context;
         this.eventModelArrayList = eventModelArrayList;
     }
+
+    @NonNull
+    @Override
+    public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.event_card_item,parent,false);
+
+       return new EventViewHolder(view);
     @NonNull
     @Override
     public EventViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -60,10 +69,12 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     @Override
     public void onBindViewHolder(@NonNull EventViewHolder holder, int position) {
         EventModel model = eventModelArrayList.get(position);
+       // EventModel m=eventModelArrayList.get(position);
         // EventModel m=eventModelArrayList.get(position);
         holder.eventNameTV.setText(model.getEvent_name());
         String registerCount = model.getEvent_name().toString();
         String event_type = model.getEvent_type().toString();
+      //  Log.d("event_type",model.getEvent_type());
         //  Log.d("event_type",model.getEvent_type());
 //        holder.countRegisterId.setText(""+model.getRegistration_count());
         //Defining Warning popup registration
@@ -78,6 +89,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 total_register = queryDocumentSnapshots.size();
+               // holder.countRegisterId.setText("" + size);
                 // holder.countRegisterId.setText("" + size);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -221,6 +233,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     warningpopupWindow.setOutsideTouchable(true);
                     warningpopupWindow.setFocusable(true);
                     warningpopupWindow.setClippingEnabled(false);
+                    warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                     warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
                     warningpopupWindow.setHeight(600);
                     //Set the background of the PopupWindow
@@ -252,6 +265,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     warningpopupWindow.setOutsideTouchable(true);
                     warningpopupWindow.setFocusable(true);
                     warningpopupWindow.setClippingEnabled(false);
+                    warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                     warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
                     warningpopupWindow.setHeight(600);
                     //Set the background of the PopupWindow
@@ -275,6 +289,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
 
                     TextView solo = popupView.findViewById(R.id.solo_reg);
                     TextView group = popupView.findViewById(R.id.group_reg);
+                     ImageView cancel = popupView.findViewById(R.id.cancel_popup);
                     ImageView cancel = popupView.findViewById(R.id.cancel_popup);
                     //Create the PopupWindow object
                     PopupWindow popupWindow = new PopupWindow(popupView, ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -299,6 +314,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                             warningpopupWindow.setOutsideTouchable(true);
                             warningpopupWindow.setFocusable(true);
                             warningpopupWindow.setClippingEnabled(false);
+                            warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                             warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
                             warningpopupWindow.setHeight(600);
                             //Set the background of the PopupWindow
@@ -337,6 +353,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                             warningpopupWindow.setOutsideTouchable(true);
                             warningpopupWindow.setFocusable(true);
                             warningpopupWindow.setClippingEnabled(false);
+                            warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                             warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
                             warningpopupWindow.setHeight(600);
                             //Set the background of the PopupWindow
@@ -394,6 +411,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
     public int getItemCount() {
         return eventModelArrayList.size();
     }
+
     public class EventViewHolder extends RecyclerView.ViewHolder{
         private final ImageView eventIV;
         private final TextView eventNameTV;
@@ -401,6 +419,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         private final ImageView eventreg_icon;
         private final TextView eventRule;
         private final ImageView rule_icon;
+        private final TextView eventTeam;
+        private final ImageView team_icon;
+        private final TextView countRegisterId;
         private final TextView likeCount;
         private final ImageView love;
         private final TextView countRegisterId;
@@ -410,11 +431,14 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             super(itemView);
             eventIV = itemView.findViewById(R.id.eventImage);
             eventNameTV = itemView.findViewById(R.id.eventName);
+
             liked=false;
             eventRegisterTV = itemView.findViewById(R.id.register_id);
             eventreg_icon = itemView.findViewById(R.id.register_link);
             eventRule = itemView.findViewById(R.id.rule_id);
             rule_icon = itemView.findViewById(R.id.rule_link);
+            eventTeam = itemView.findViewById(R.id.team_id);
+            team_icon = itemView.findViewById(R.id.team_link);
             likeCount = itemView.findViewById(R.id.like_count);
             love = itemView.findViewById(R.id.love);
             countRegisterId = itemView.findViewById(R.id.count_register_id);
@@ -448,6 +472,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     activity.getSupportFragmentManager().beginTransaction().replace(R.id.frame_layout,teamFragment).addToBackStack(null).commit();
                 }
             };
+
 //            itemView.findViewById(R.id.team_id).setOnClickListener(onClickListener);
 //            itemView.findViewById(R.id.team_link).setOnClickListener(onClickListener);
         }

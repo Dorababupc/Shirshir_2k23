@@ -22,4 +22,13 @@
         <item>HS</item>
 
     </string-array>
+    <string name="size_prompt">Select department:</string>
+    <string-array name="size_options">
+        <item>S</item>
+        <item>M</item>
+        <item>L</item>
+        <item>XL</item>
+        <item>XXL</item>
+        <item>XXXL</item>
+    </string-array>
 </resources>

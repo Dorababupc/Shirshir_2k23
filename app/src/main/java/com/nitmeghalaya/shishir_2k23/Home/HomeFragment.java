@@ -56,9 +56,11 @@ public class HomeFragment extends Fragment {
     private SliderView sliderView;
 
     //For Gallery
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerView,photorecyclerView;
     private ArrayList<GalleryModel> galleryDataArrayList;
+    private ArrayList<PhotoModel> photoOfTheDayArrayList;
     private GalleryAdapter galleryAdapter;
+    private Photo_Of_The_Day_Adapter photo_of_the_day_adapter;
 
     private RecyclerView youtubeRecyclerview;
     private ArrayList<YoutubeDataModel> youtubeDataModelArrayList;
@@ -186,10 +188,13 @@ public class HomeFragment extends Fragment {
         // creating a new array list for our array list.
         sliderDataArrayList = new ArrayList<>();
         galleryDataArrayList = new ArrayList<>();
+        photoOfTheDayArrayList = new ArrayList<>();
+
         // initializing our slider view and
         // firebase firestore instance.
         sliderView = view.findViewById(R.id.image_slider);
         recyclerView = view.findViewById(R.id.gallery_recycler);
+        photorecyclerView = view.findViewById(R.id.photoOFTheDay_recycler);
 
 
 
@@ -199,9 +204,16 @@ public class HomeFragment extends Fragment {
         // adding our array list to our recycler view adapter class.
         galleryAdapter = new GalleryAdapter(view.getContext(),galleryDataArrayList);
         recyclerView.setAdapter(galleryAdapter);
+
+        //For photo of the Day
+        photorecyclerView.setHasFixedSize(true);
+        photorecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(),LinearLayoutManager.HORIZONTAL,false));
+        photo_of_the_day_adapter = new Photo_Of_The_Day_Adapter(view.getContext(),photoOfTheDayArrayList);
+        photorecyclerView.setAdapter(photo_of_the_day_adapter);
         //calling our method to load images.
         loadImages();
         loadGalleryImage();
+        loadPhotoOfTheDayImage();
 
 
         ivFacebook.setOnClickListener(new View.OnClickListener() {
@@ -333,6 +345,41 @@ public class HomeFragment extends Fragment {
 
                 recyclerView.setAdapter(galleryAdapter);
             }
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                galleryprogressBar.setVisibility(View.GONE);
+                Toast.makeText(getContext(), "Fail to load slider data.", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    //Photo Of the Day
+    private void loadPhotoOfTheDayImage(){
+        db.collection("PhotoOfTheDay").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                galleryprogressBar.setVisibility(View.GONE);
+                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
+                    PhotoModel galleryDataModel = documentSnapshot.toObject(PhotoModel.class);
+                    PhotoModel model = new PhotoModel();
+
+                    // below line is use for setting our
+                    // image url for our modal class.
+                    model.setImgUrl(galleryDataModel.getImgUrl());
+
+                    // after that we are adding that
+                    // data inside our array list.
+                    photoOfTheDayArrayList.add(model);
+
+                    // after adding data to our array list we are passing
+                    // that array list inside our adapter class.
+                    photo_of_the_day_adapter = new Photo_Of_The_Day_Adapter(getContext(),photoOfTheDayArrayList);
+
+                    photorecyclerView.setAdapter(photo_of_the_day_adapter);
+                }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override

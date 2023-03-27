@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.nitmeghalaya.shishir_2k23">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
@@ -14,20 +14,22 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shishir_2k23">
         <activity
-            android:name="com.nitmeghalaya.shishir_2k23.MainActivity"
+            android:name=".MyProfileActivity"
             android:exported="false" />
         <activity
-            android:name="com.nitmeghalaya.shishir_2k23.Registration.Group_Registration_Activity"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name="com.nitmeghalaya.shishir_2k23.Gallery.GalleryActivity"
+            android:name=".Registration.Group_Registration_Activity"
             android:exported="false" />
         <activity
-            android:name="com.nitmeghalaya.shishir_2k23.loginActivity"
+            android:name=".Gallery.GalleryActivity"
             android:exported="false" />
-
         <activity
-            android:name="com.nitmeghalaya.shishir_2k23.SplashScreenActivity"
+            android:name=".EventRegisterActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -37,11 +39,12 @@
         </activity>
 
         <service
-            android:name="com.nitmeghalaya.shishir_2k23.MyFirebaseMessagingService"
+            android:name=".MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
     </application>
+
 </manifest>
