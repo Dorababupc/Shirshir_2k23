@@ -94,7 +94,9 @@ public class GalleryAdapter2 extends RecyclerView.Adapter<GalleryAdapter2.MyView
             @Override
             public void onClick(View view) {
                 if(firebaseUser==null){
-                    Toast.makeText(holder.love.getContext(),"You need to login to like",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(holder.love.getContext(),"You need to login to like",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(context, loginActivity.class);
+                    context.startActivity(intent);
 
                 }
                 else{

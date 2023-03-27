@@ -13,6 +13,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,6 +31,7 @@ public class MyProfileActivity extends AppCompatActivity {
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri mImageUri;
     private ImageButton logoutBtn;
+    private ProgressBar progressBar;
 
     private StorageReference mStorageRef;
 
@@ -41,6 +43,7 @@ public class MyProfileActivity extends AppCompatActivity {
         mUploadBtn = findViewById(R.id.upload_image);
         mImageView = findViewById(R.id.uploaded_image);
         logoutBtn = findViewById(R.id.log_out_id);
+        progressBar = findViewById(R.id.Myprofile_progressBar);
 
         mStorageRef = FirebaseStorage.getInstance().getReference("User_Uploads");
 
@@ -80,6 +83,7 @@ public class MyProfileActivity extends AppCompatActivity {
     }
 
     private void uploadFile() {
+        progressBar.setVisibility(View.VISIBLE);
         mUploadBtn.setEnabled(false);
         if (mImageUri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
@@ -89,7 +93,8 @@ public class MyProfileActivity extends AppCompatActivity {
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            Toast.makeText(MyProfileActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            progressBar.setVisibility(View.GONE);
+                           // Toast.makeText(MyProfileActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(MyProfileActivity.this, MyProfileActivity.class);
                             startActivity(intent);
                             finish();
@@ -100,10 +105,12 @@ public class MyProfileActivity extends AppCompatActivity {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             mUploadBtn.setEnabled(true);
+                            progressBar.setVisibility(View.GONE);
                             Toast.makeText(MyProfileActivity.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
         } else {
+            progressBar.setVisibility(View.GONE);
             Toast.makeText(this, "No file selected", Toast.LENGTH_SHORT).show();
         }
     }

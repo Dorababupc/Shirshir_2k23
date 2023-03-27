@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#686565"
     android:orientation="vertical"
     tools:context=".SplashScreenActivity">
 
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/signin"
         android:layout_marginStart="10dp"
+        android:hint="Enter email"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
@@ -43,7 +45,7 @@
         android:id="@+id/password"
         android:layout_below="@id/username"
         android:background="#30ffffff"
-        android:text="password"
+       android:hint="Enter Password"
         android:textColorHint="@color/white"
         android:layout_gravity="center"
         android:textColor="@color/white"
@@ -52,6 +54,12 @@
         android:drawableLeft="@drawable/ic_baseline_info_24"
         android:drawablePadding="20dp"
         android:inputType="textPassword" />
+    <ProgressBar
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:id="@+id/login_progress"/>
 
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
