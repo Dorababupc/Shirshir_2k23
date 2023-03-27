@@ -92,6 +92,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 int size = queryDocumentSnapshots.size()+total_register;
+
                 holder.countRegisterId.setText("" + size);
             }
         }).addOnFailureListener(new OnFailureListener() {
@@ -132,6 +133,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                             // Get the array of strings for the current document
                             ArrayList<String> innerStrings = (ArrayList<String>) document.get("userIds");
                             holder.likeCount.setText(String.valueOf(innerStrings.size()));
+                            holder.tempCount=innerStrings.size();
                             // Check if the inner string is present in the array of strings
                             if(firebaseUser!=null){
                                 if (innerStrings.contains(firebaseUser.getUid())) {
@@ -158,7 +160,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     if(holder.liked){
                         holder.liked=false;
                         holder.love.setImageResource(R.drawable.ic_baseline_favorite_border_24);
-
+                        holder.tempCount= holder.tempCount-1;
+                        holder.likeCount.setText(String.valueOf(holder.tempCount));
                         CollectionReference likesRef = db.collection("Likes");
 
                         likesRef.whereEqualTo("eventId", model.getId()).get()
@@ -176,6 +179,8 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     else{
                         holder.liked=true;
                         holder.love.setImageResource(R.drawable.ic_baseline_favorite_24);
+                        holder.tempCount= holder.tempCount+1;
+                        holder.likeCount.setText(String.valueOf(holder.tempCount));
                         Map<String, Object> updateMap = new HashMap<>();
                         updateMap.put("userIds", FieldValue.arrayUnion(firebaseUser.getUid()));
                         db.collection("Likes").whereEqualTo("eventId", model.getId()).get().addOnCompleteListener(task -> {
@@ -472,6 +477,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             private final TextView likeCount;
             private final ImageView love;
             private boolean liked;
+            private int tempCount;
 
             public EventViewHolder(View itemView){
                 super(itemView);
@@ -485,7 +491,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                 eventRule = itemView.findViewById(R.id.rule_id);
                 rule_icon = itemView.findViewById(R.id.rule_link);
                 countRegisterId = itemView.findViewById(R.id.count_register_id);
-
+                 tempCount=0;
 
 //            itemView.findViewById(R.id.register_id).setOnClickListener(new View.OnClickListener() {
 //                @Override

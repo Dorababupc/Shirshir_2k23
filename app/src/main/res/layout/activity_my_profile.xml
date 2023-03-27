@@ -19,7 +19,8 @@
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="My Profile"
+           android:text="Welcome"
+           android:id="@+id/userId"
            android:layout_margin="5dp"
            android:padding="2dp"
            android:textColor="@color/white"
