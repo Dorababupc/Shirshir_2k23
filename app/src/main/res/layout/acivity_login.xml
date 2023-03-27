@@ -100,7 +100,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/forgotpass"
+        android:id="@+id/forgotIn"
         android:layout_below="@id/loginbtn"
         android:text="Forgot password?"
         android:layout_gravity="center"

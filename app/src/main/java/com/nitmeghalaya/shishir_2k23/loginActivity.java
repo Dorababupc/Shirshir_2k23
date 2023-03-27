@@ -22,6 +22,7 @@ public class loginActivity extends AppCompatActivity {
     private EditText password;
     private TextView skipTV, signupTV;
     private MaterialButton button;
+    private TextView forgot;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +32,33 @@ public class loginActivity extends AppCompatActivity {
         button=findViewById(R.id.loginbtn);
         skipTV = findViewById(R.id.skip);
         signupTV = findViewById(R.id.signup_id);
+        forgot=findViewById(R.id.forgotIn);
+        forgot.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                final String usernameText=username.getText().toString();
+                if (TextUtils.isEmpty(usernameText)) {
+                    // Email is empty, show error message
+                    Toast.makeText(getApplicationContext(), "Enter email for sending the reset link", Toast.LENGTH_SHORT).show();
+                    return;
+                }
 
+                FirebaseAuth.getInstance().sendPasswordResetEmail(usernameText)
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    // Password reset email sent successfully
+                                    Toast.makeText(loginActivity.this, "Password reset email sent", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    // Error sending password reset email
+                                    Toast.makeText(loginActivity.this, "Error sending password reset email", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+
+            }
+        });
         button.setOnClickListener(new View.OnClickListener() {
 
             @Override

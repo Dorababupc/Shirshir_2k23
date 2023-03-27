@@ -369,7 +369,7 @@ public class HomeFragment extends Fragment {
                     // below line is use for setting our
                     // image url for our modal class.
                     model.setImgUrl(galleryDataModel.getImgUrl());
-
+                    model.setId(documentSnapshot.getId());
                     // after that we are adding that
                     // data inside our array list.
                     photoOfTheDayArrayList.add(model);

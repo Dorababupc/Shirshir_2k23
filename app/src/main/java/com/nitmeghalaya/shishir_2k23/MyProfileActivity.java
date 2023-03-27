@@ -55,6 +55,7 @@ public class MyProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 uploadFile();
+
             }
         });
 

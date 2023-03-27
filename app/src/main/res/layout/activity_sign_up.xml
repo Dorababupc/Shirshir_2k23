@@ -128,15 +128,5 @@
         android:textSize="20dp"/>
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/forgotpass"
-        android:layout_below="@id/loginbtn"
-        android:text="Forgot password?"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_margin="20dp"/>
 
 </LinearLayout>
