@@ -11,11 +11,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
@@ -27,6 +29,7 @@ public class MyProfileActivity extends AppCompatActivity {
     private ImageView mImageView,mChooseImageBtn;
     private static final int PICK_IMAGE_REQUEST = 1;
     private Uri mImageUri;
+    private ImageButton logoutBtn;
 
     private StorageReference mStorageRef;
 
@@ -37,6 +40,7 @@ public class MyProfileActivity extends AppCompatActivity {
         mChooseImageBtn = findViewById(R.id.choose_image);
         mUploadBtn = findViewById(R.id.upload_image);
         mImageView = findViewById(R.id.uploaded_image);
+        logoutBtn = findViewById(R.id.log_out_id);
 
         mStorageRef = FirebaseStorage.getInstance().getReference("User_Uploads");
 
@@ -53,6 +57,19 @@ public class MyProfileActivity extends AppCompatActivity {
                 uploadFile();
             }
         });
+
+
+        //LogOut
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                mAuth.signOut();
+                Intent intent = new Intent(MyProfileActivity.this, loginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
     }
     private void openFileChooser() {
         Intent intent = new Intent();
@@ -62,6 +79,7 @@ public class MyProfileActivity extends AppCompatActivity {
     }
 
     private void uploadFile() {
+        mUploadBtn.setEnabled(false);
         if (mImageUri != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(mImageUri));
@@ -71,11 +89,16 @@ public class MyProfileActivity extends AppCompatActivity {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Toast.makeText(MyProfileActivity.this, "Upload successful", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(MyProfileActivity.this, MyProfileActivity.class);
+                            startActivity(intent);
+                            finish();
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            mUploadBtn.setEnabled(true);
                             Toast.makeText(MyProfileActivity.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
