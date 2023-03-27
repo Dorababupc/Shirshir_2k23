@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.shishir_2k23">
+    package="com.nitmeghalaya.shishir_2k23">
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET" />
@@ -14,24 +14,34 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Shishir_2k23">
         <activity
-            android:name=".MainActivity"
+            android:name="com.nitmeghalaya.shishir_2k23.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".Registration.Group_Registration_Activity"
+            android:name="com.nitmeghalaya.shishir_2k23.Registration.Group_Registration_Activity"
             android:exported="false" />
         <activity
-            android:name=".Gallery.GalleryActivity"
+            android:name="com.nitmeghalaya.shishir_2k23.Gallery.GalleryActivity"
             android:exported="false" />
         <activity
-            android:name=".EventRegisterActivity"
+            android:name="com.nitmeghalaya.shishir_2k23.loginActivity"
             android:exported="false" />
 
+        <activity
+            android:name="com.nitmeghalaya.shishir_2k23.SplashScreenActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service
-        android:name=".MyFirebaseMessagingService"
-        android:exported="false">
-        <intent-filter>
-            <action android:name="com.google.firebase.MESSAGING_EVENT" />
-        </intent-filter>
-    </service>
+            android:name="com.nitmeghalaya.shishir_2k23.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 </manifest>
