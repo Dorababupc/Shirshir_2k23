@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.nitmeghalaya.shishir_2k23.Event.EventFragment;
 import com.nitmeghalaya.shishir_2k23.Home.HomeFragment;
 import com.nitmeghalaya.shishir_2k23.Shop.ShopFragment;
@@ -110,8 +112,18 @@ public class MainActivity extends AppCompatActivity {
         switch (itemId) {
             case R.id.myApp:
                 // Handle menu item one click
-                Intent intent = new Intent(MainActivity.this,MyProfileActivity.class);
-                startActivity(intent);
+                FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
+                //String userid=firebaseUser.getUid();
+                //String outerString = model.getId();
+                if(firebaseUser != null)
+                {
+                    Intent intent = new Intent(MainActivity.this,MyProfileActivity.class);
+                    startActivity(intent);
+                }
+                else {
+                    Intent intent = new Intent(MainActivity.this,SignUpActivity.class);
+                    startActivity(intent);
+                }
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
