@@ -117,7 +117,7 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-        String userId=user.getUid();
+       // String userId=user.getUid();
         //Assigning variable for Social Media
         ivFacebook = view.findViewById(R.id.facebook);
         ivInstagram = view.findViewById(R.id.instagram);

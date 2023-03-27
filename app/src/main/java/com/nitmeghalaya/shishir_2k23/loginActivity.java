@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,6 +20,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class loginActivity extends AppCompatActivity {
     private EditText username;
     private EditText password;
+    private TextView skipTV, signupTV;
     private MaterialButton button;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -27,6 +29,8 @@ public class loginActivity extends AppCompatActivity {
         username=findViewById(R.id.username);
         password=findViewById(R.id.password);
         button=findViewById(R.id.loginbtn);
+        skipTV = findViewById(R.id.skip);
+        signupTV = findViewById(R.id.signup_id);
 
         button.setOnClickListener(new View.OnClickListener() {
 
@@ -63,6 +67,24 @@ public class loginActivity extends AppCompatActivity {
                                 }
                             }
                         });
+            }
+        });
+        //Skip is clicked
+        skipTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(loginActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        //directing to SignUp activity
+        signupTV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(loginActivity.this,SignUpActivity.class);
+                startActivity(intent);
             }
         });
 

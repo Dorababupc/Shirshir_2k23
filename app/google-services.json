@@ -10,6 +10,35 @@
       "client_info": {
         "mobilesdk_app_id": "1:590719138078:android:55d41feb8eb677c1ff710f",
         "android_client_info": {
+          "package_name": "com.example.shishir_2k23"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "590719138078-7bons4pv8ak9cqaejoi92hqcvjmjith5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDDCeHvD680QgIH57te1_AkPfL3w34hwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "590719138078-7bons4pv8ak9cqaejoi92hqcvjmjith5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:590719138078:android:3b8df0510ba8ccaaff710f",
+        "android_client_info": {
           "package_name": "com.nitmeghalaya.shishir_2k23"
         }
       },
