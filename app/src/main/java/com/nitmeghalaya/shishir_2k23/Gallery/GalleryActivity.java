@@ -56,7 +56,7 @@ public class GalleryActivity extends AppCompatActivity {
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
                     GalleryModel galleryDataModel = documentSnapshot.toObject(GalleryModel.class);
                     GalleryModel model = new GalleryModel();
-
+                    model.setId(documentSnapshot.getId());
                     // below line is use for setting our
                     // image url for our modal class.
                     model.setImgUrl(galleryDataModel.getImgUrl());
