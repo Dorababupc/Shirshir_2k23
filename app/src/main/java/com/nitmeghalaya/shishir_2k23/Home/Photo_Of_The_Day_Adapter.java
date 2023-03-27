@@ -16,10 +16,10 @@ import java.util.ArrayList;
 
 public class Photo_Of_The_Day_Adapter extends RecyclerView.Adapter<Photo_Of_The_Day_Adapter.PhotoViewHolder> {
 
-    private ArrayList<GalleryModel> galleryModelArrayList;
+    private ArrayList<PhotoModel> galleryModelArrayList;
     private Context context;
 
-    public Photo_Of_The_Day_Adapter(Context context,ArrayList<GalleryModel> galleryModelArrayList) {
+    public Photo_Of_The_Day_Adapter(Context context,ArrayList<PhotoModel> galleryModelArrayList) {
         this.galleryModelArrayList = galleryModelArrayList;
         this.context = context;
     }
@@ -33,7 +33,7 @@ public class Photo_Of_The_Day_Adapter extends RecyclerView.Adapter<Photo_Of_The_
 
     @Override
     public void onBindViewHolder(@NonNull PhotoViewHolder holder, int position) {
-        final GalleryModel model = galleryModelArrayList.get(position);
+        final PhotoModel model = galleryModelArrayList.get(position);
         Picasso.get().load(model.getImgUrl()).into(holder.imageView);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

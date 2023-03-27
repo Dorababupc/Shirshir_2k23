@@ -132,7 +132,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     warningpopupWindow.setOutsideTouchable(true);
                     warningpopupWindow.setFocusable(true);
                     warningpopupWindow.setClippingEnabled(false);
-                    warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                    warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                     warningpopupWindow.setHeight(600);
                     //Set the background of the PopupWindow
                     //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -163,7 +163,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                     warningpopupWindow.setOutsideTouchable(true);
                     warningpopupWindow.setFocusable(true);
                     warningpopupWindow.setClippingEnabled(false);
-                    warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                    warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                     warningpopupWindow.setHeight(600);
                     //Set the background of the PopupWindow
                     //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -210,7 +210,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                             warningpopupWindow.setOutsideTouchable(true);
                             warningpopupWindow.setFocusable(true);
                             warningpopupWindow.setClippingEnabled(false);
-                            warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                            warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                             warningpopupWindow.setHeight(600);
                             //Set the background of the PopupWindow
                             //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
@@ -248,7 +248,7 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                             warningpopupWindow.setOutsideTouchable(true);
                             warningpopupWindow.setFocusable(true);
                             warningpopupWindow.setClippingEnabled(false);
-                            warningpopupWindow.setWidth(1000); // Set the width of the popup window to 800 pixels
+                            warningpopupWindow.setWidth(900); // Set the width of the popup window to 800 pixels
                             warningpopupWindow.setHeight(600);
                             //Set the background of the PopupWindow
                             //popupWindow.setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));

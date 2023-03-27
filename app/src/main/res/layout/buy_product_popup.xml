@@ -23,6 +23,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Roll Number" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="15dp"
+        android:text="Availavle size: S, M, L, XL, XLL"/>
 
     <EditText
         android:id="@+id/size_of_cloth_edit_text"
@@ -35,6 +42,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Email" />
+    <ProgressBar
+        android:id="@+id/buy_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/register_button"

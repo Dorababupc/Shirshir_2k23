@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -84,6 +85,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             @Override
             public void onClick(View v) {
                 // Create a new BottomSheetDialog
+
                 BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(v.getContext());
 
                 // Inflate the registration form layout
@@ -95,30 +97,41 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                 EditText sizeOfClothEditText = registrationFormView.findViewById(R.id.size_of_cloth_edit_text);
                 EditText emailEditText = registrationFormView.findViewById(R.id.email_edit_text);
                 Button registerButton = registrationFormView.findViewById(R.id.register_button);
+                ProgressBar buyprogressBar = registrationFormView.findViewById(R.id.buy_progress);
 
                 // Set click listener on register button
                 registerButton.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        registerButton.setEnabled(false);
                         // Get the input values from the registration form
+                        buyprogressBar.setVisibility(View.VISIBLE);
                         String name = nameEditText.getText().toString();
                         String rollNumber = rollNumberEditText.getText().toString();
                         String sizeOfCloth = sizeOfClothEditText.getText().toString();
                         String email = emailEditText.getText().toString();
                         // Validate the registration form fields here
                         if (name.isEmpty()) {
+                            buyprogressBar.setVisibility(View.GONE);
+                            registerButton.setEnabled(true);
                             Toast.makeText(v.getContext(), "Please enter your name", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         if (rollNumber.isEmpty()) {
+                            registerButton.setEnabled(true);
+                            buyprogressBar.setVisibility(View.GONE);
                             Toast.makeText(v.getContext(), "Please enter your roll number", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         if (sizeOfCloth.isEmpty()) {
+                            registerButton.setEnabled(true);
+                            buyprogressBar.setVisibility(View.GONE);
                             Toast.makeText(v.getContext(), "Please enter your size of cloth", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         if (email.isEmpty()) {
+                            registerButton.setEnabled(true);
+                            buyprogressBar.setVisibility(View.GONE);
                             Toast.makeText(v.getContext(), "Please enter your email", Toast.LENGTH_SHORT).show();
                             return;
                         }
@@ -130,7 +143,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
                         BuyModelClass registration = new BuyModelClass(name, rollNumber, sizeOfCloth, email);
                         String key = registrationRef.push().getKey();
                         registrationRef.child(key).setValue(registration);
-
+                        buyprogressBar.setVisibility(View.GONE);
                         // Dismiss the dialog
                         bottomSheetDialog.dismiss();
                         // Inflate the popup_success layout
@@ -173,6 +186,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         public ImageView imageView;
         public TextView name;
         public TextView price;
+        //public ProgressBar buyprogressBar;
         public Button buy;
         public ProductViewHolder(View view){
             super(view);
@@ -180,6 +194,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             name = view.findViewById(R.id.product_name);
             price = view.findViewById(R.id.product_price);
             buy = view.findViewById(R.id.buy_product);
+           // buyprogressBar = view.findViewById(R.id.buy_progress);
 
         }
     }

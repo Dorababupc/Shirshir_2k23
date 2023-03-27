@@ -55,7 +55,8 @@ public class HomeFragment extends Fragment {
 
     //For Gallery
     private RecyclerView recyclerView,photorecyclerView;
-    private ArrayList<GalleryModel> galleryDataArrayList,photoOfTheDayArrayList;
+    private ArrayList<GalleryModel> galleryDataArrayList;
+    private ArrayList<PhotoModel> photoOfTheDayArrayList;
     private GalleryAdapter galleryAdapter;
     private Photo_Of_The_Day_Adapter photo_of_the_day_adapter;
 
@@ -354,13 +355,13 @@ public class HomeFragment extends Fragment {
 
     //Photo Of the Day
     private void loadPhotoOfTheDayImage(){
-        db.collection("Gallery").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+        db.collection("PhotoOfTheDay").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
             @Override
             public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                 galleryprogressBar.setVisibility(View.GONE);
                 for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots){
-                    GalleryModel galleryDataModel = documentSnapshot.toObject(GalleryModel.class);
-                    GalleryModel model = new GalleryModel();
+                    PhotoModel galleryDataModel = documentSnapshot.toObject(PhotoModel.class);
+                    PhotoModel model = new PhotoModel();
 
                     // below line is use for setting our
                     // image url for our modal class.
@@ -372,7 +373,7 @@ public class HomeFragment extends Fragment {
 
                     // after adding data to our array list we are passing
                     // that array list inside our adapter class.
-                    photo_of_the_day_adapter = new Photo_Of_The_Day_Adapter(getContext(),galleryDataArrayList);
+                    photo_of_the_day_adapter = new Photo_Of_The_Day_Adapter(getContext(),photoOfTheDayArrayList);
 
                     photorecyclerView.setAdapter(photo_of_the_day_adapter);
                 }
