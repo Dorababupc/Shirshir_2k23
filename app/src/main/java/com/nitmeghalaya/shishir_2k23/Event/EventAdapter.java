@@ -32,6 +32,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.nitmeghalaya.shishir_2k23.loginActivity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -149,7 +150,9 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             @Override
             public void onClick(View view) {
                 if(firebaseUser==null){
-                    Toast.makeText(holder.love.getContext(),"You need to login to like",Toast.LENGTH_LONG).show();
+                    //Toast.makeText(holder.love.getContext(),"You need to login to like",Toast.LENGTH_LONG).show();
+                    Intent intent = new Intent(context, loginActivity.class);
+                    context.startActivity(intent);
                 }
                 else{
                     if(holder.liked){

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText name,email,password,repassword;
     private TextView skip,signin;
     private MaterialButton signup;
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,7 @@ public class SignUpActivity extends AppCompatActivity {
         skip = findViewById(R.id.skip_id);
         signin = findViewById(R.id.signin_id);
         signup=findViewById(R.id.signup);
+        progressBar = findViewById(R.id.signup_progress);
         //Skip
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,25 +63,30 @@ public class SignUpActivity extends AppCompatActivity {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                progressBar.setVisibility(View.VISIBLE);
                 String usernameText=name.getText().toString();
                 String emailText=email.getText().toString();
                 String passwordText=password.getText().toString();
                 String repasswordText=repassword.getText().toString();
                 if (TextUtils.isEmpty(usernameText)) {
                     // Email is empty, show error message
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Username is required.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if (TextUtils.isEmpty(emailText)) {
                     // Email is empty, show error message
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(), "Email is required.", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(TextUtils.isEmpty(passwordText)){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"Password is required",Toast.LENGTH_LONG).show();
                     return;
                 }
                 if(TextUtils.isEmpty(repasswordText)){
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"Password reentry is required",Toast.LENGTH_LONG).show();
                     return;
                 }
@@ -89,6 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isSuccessful()) {
+                                        progressBar.setVisibility(View.GONE);
                                         // Sign-up success, update UI with the signed-in user's information
                                         FirebaseUser user = mAuth.getCurrentUser();
                                         String uid = user.getUid();
@@ -103,7 +112,8 @@ public class SignUpActivity extends AppCompatActivity {
                                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                                                     @Override
                                                     public void onSuccess(Void aVoid) {
-                                                          Toast.makeText(SignUpActivity.this,"Signup successful,login to continue",Toast.LENGTH_LONG).show();
+                                                        progressBar.setVisibility(View.GONE);
+                                                          //Toast.makeText(SignUpActivity.this,"Signup successful,login to continue",Toast.LENGTH_LONG).show();
                                                         Intent intent = new Intent(SignUpActivity.this,loginActivity.class);
                                                         startActivity(intent);
                                                         finish();
@@ -112,7 +122,7 @@ public class SignUpActivity extends AppCompatActivity {
                                                 .addOnFailureListener(new OnFailureListener() {
                                                     @Override
                                                     public void onFailure(@NonNull Exception e) {
-
+                                                        progressBar.setVisibility(View.GONE);
                                                     }
                                                 });
 
@@ -122,6 +132,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                                     } else {
+                                        progressBar.setVisibility(View.GONE);
                                         // If sign-up fails, display a message to the user
                                         Toast.makeText(SignUpActivity.this, "Authentication failed.",
                                                 Toast.LENGTH_SHORT).show();
@@ -130,6 +141,7 @@ public class SignUpActivity extends AppCompatActivity {
                             });
                 }
                 else{
+                    progressBar.setVisibility(View.GONE);
                     Toast.makeText(getApplicationContext(),"passwords not matching",Toast.LENGTH_LONG).show();
                 }
 
