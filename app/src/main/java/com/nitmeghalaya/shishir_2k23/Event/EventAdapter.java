@@ -118,7 +118,6 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
             }
         });
         FirebaseUser firebaseUser= FirebaseAuth.getInstance().getCurrentUser();
-        String userid=firebaseUser.getUid();
         String outerString = model.getId(); // the outer string to check
         // Query the 'likes' collection with the outer string as a filter
 //        FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -133,10 +132,13 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
                             ArrayList<String> innerStrings = (ArrayList<String>) document.get("userIds");
                             holder.likeCount.setText(String.valueOf(innerStrings.size()));
                             // Check if the inner string is present in the array of strings
-                            if (innerStrings.contains(userid)) {
-                                holder.liked=true;
-                                holder.love.setImageResource(R.drawable.ic_baseline_favorite_24);
+                            if(firebaseUser!=null){
+                                if (innerStrings.contains(firebaseUser.getUid())) {
+                                    holder.liked=true;
+                                    holder.love.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                }
                             }
+
                         }
                     } else {
                         Log.d(TAG, "Error getting documents: ", task.getException());
@@ -146,48 +148,53 @@ public class EventAdapter extends RecyclerView.Adapter<EventAdapter.EventViewHol
         holder.love.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(holder.liked){
-                    holder.liked=false;
-                    holder.love.setImageResource(R.drawable.ic_baseline_favorite_border_24);
-
-                    CollectionReference likesRef = db.collection("Likes");
-
-                    likesRef.whereEqualTo("eventId", model.getId()).get()
-                            .addOnSuccessListener(queryDocumentSnapshots -> {
-                                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                                    ArrayList<String> innerStrings = (ArrayList<String>) documentSnapshot.get("userIds");
-                                    if (innerStrings != null) {
-                                        innerStrings.remove(userid);
-                                        documentSnapshot.getReference().update("userIds", innerStrings);
-                                    }
-                                }
-                            });
-
+                if(firebaseUser==null){
+                    Toast.makeText(holder.love.getContext(),"You need to login to like",Toast.LENGTH_LONG).show();
                 }
                 else{
-                    holder.liked=true;
-                    holder.love.setImageResource(R.drawable.ic_baseline_favorite_24);
-                    Map<String, Object> updateMap = new HashMap<>();
-                    updateMap.put("userIds", FieldValue.arrayUnion(userid));
-                    db.collection("Likes").whereEqualTo("eventId", model.getId()).get().addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                // Update the document with the new array value
-                                db.collection("Likes").document(document.getId()).update(updateMap)
-                                        .addOnSuccessListener(aVoid -> {
-                                            // Update successful
-                                            Log.d(TAG, "Document updated");
-                                        })
-                                        .addOnFailureListener(e -> {
-                                            // Update failed
-                                            Log.e(TAG, "Error updating document", e);
-                                        });
-                            }
-                        } else {
-                            Log.e(TAG, "Error getting documents: ", task.getException());
-                        }
-                    });
+                    if(holder.liked){
+                        holder.liked=false;
+                        holder.love.setImageResource(R.drawable.ic_baseline_favorite_border_24);
 
+                        CollectionReference likesRef = db.collection("Likes");
+
+                        likesRef.whereEqualTo("eventId", model.getId()).get()
+                                .addOnSuccessListener(queryDocumentSnapshots -> {
+                                    for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                                        ArrayList<String> innerStrings = (ArrayList<String>) documentSnapshot.get("userIds");
+                                        if (innerStrings != null) {
+                                            innerStrings.remove(firebaseUser.getUid());
+                                            documentSnapshot.getReference().update("userIds", innerStrings);
+                                        }
+                                    }
+                                });
+
+                    }
+                    else{
+                        holder.liked=true;
+                        holder.love.setImageResource(R.drawable.ic_baseline_favorite_24);
+                        Map<String, Object> updateMap = new HashMap<>();
+                        updateMap.put("userIds", FieldValue.arrayUnion(firebaseUser.getUid()));
+                        db.collection("Likes").whereEqualTo("eventId", model.getId()).get().addOnCompleteListener(task -> {
+                            if (task.isSuccessful()) {
+                                for (QueryDocumentSnapshot document : task.getResult()) {
+                                    // Update the document with the new array value
+                                    db.collection("Likes").document(document.getId()).update(updateMap)
+                                            .addOnSuccessListener(aVoid -> {
+                                                // Update successful
+                                                Log.d(TAG, "Document updated");
+                                            })
+                                            .addOnFailureListener(e -> {
+                                                // Update failed
+                                                Log.e(TAG, "Error updating document", e);
+                                            });
+                                }
+                            } else {
+                                Log.e(TAG, "Error getting documents: ", task.getException());
+                            }
+                        });
+
+                    }
                 }
             }
         });

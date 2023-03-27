@@ -9,7 +9,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/signin"
         android:text="Sign Up"
         android:textColor="@color/white"
         android:textSize="35dp"
@@ -19,7 +18,7 @@
         android:gravity="center"/>
 
     <EditText
-        android:id="@+id/username"
+        android:id="@+id/usernameUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/signin"
@@ -38,7 +37,7 @@
         android:textColorHint="@color/white" />
 
     <EditText
-        android:id="@+id/email_id"
+        android:id="@+id/emailUp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/signin"
@@ -57,7 +56,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/password"
+        android:id="@+id/passwordUp"
         android:layout_below="@id/username"
         android:background="#30ffffff"
        android:hint="Enter Password"
@@ -72,7 +71,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/retype_password"
+        android:id="@+id/repasswordUp"
         android:layout_below="@id/username"
         android:background="#30ffffff"
         android:hint="Re-enter Password"
@@ -88,7 +87,7 @@
     <com.google.android.material.button.MaterialButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/loginbtn"
+        android:id="@+id/signup"
         android:layout_below="@id/password"
         android:text="SIGN UP"
         android:layout_gravity="center"
