@@ -15,12 +15,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.nitmeghalaya.shishir_2k23.EventRegisterActivity;
 import com.nitmeghalaya.shishir_2k23.MainActivity;
 import com.nitmeghalaya.shishir_2k23.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -30,6 +32,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -50,6 +54,8 @@ public class Group_Registration_Activity extends AppCompatActivity implements Ad
     private EditText teamMemberEditText;
     private Button addTeamMemberButton;
     private ListView teamMembersList;
+    private boolean isSubmitting = false;
+    private ProgressBar submitprogressBar;
     private String Eventname;
     private List<String> teamMembers;
 
@@ -60,6 +66,7 @@ public class Group_Registration_Activity extends AppCompatActivity implements Ad
 
         eventNameTV = findViewById(R.id.event_name);
         eventNameTV.setText(getIntent().getStringExtra("event_name"));
+        submitprogressBar = findViewById(R.id.submit_button_progress1);
 
         mTeamNameField = findViewById(R.id.Team_name_field);
         mleaderNameField = findViewById(R.id.name_field);
@@ -116,18 +123,30 @@ public class Group_Registration_Activity extends AppCompatActivity implements Ad
     }
 
     public void onSubmitButtonClicked(View view) {
+        mRegisterBtn.setEnabled(false);
+        if (isSubmitting) {
+            Toast.makeText(this, "Please wait for the previous submission to complete", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        submitprogressBar.setVisibility(View.VISIBLE);
         String Teamname = mTeamNameField.getText().toString();
         if (TextUtils.isEmpty(Teamname)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please enter your Team name", Toast.LENGTH_SHORT).show();
             return;
         }
         String leader_name = mleaderNameField.getText().toString();
         if (TextUtils.isEmpty(leader_name)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please enter your Leader name", Toast.LENGTH_SHORT).show();
             return;
         }
         String email = mEmailField.getText().toString();
         if (TextUtils.isEmpty(email)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please enter your email", Toast.LENGTH_SHORT).show();
             return;
         }
@@ -136,78 +155,129 @@ public class Group_Registration_Activity extends AppCompatActivity implements Ad
         Pattern phonePattern = Pattern.compile("^[+]?[0-9]{10,13}$");
         Matcher phoneMatcher = phonePattern.matcher(phone);
         if (!phoneMatcher.matches()) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please enter a valid phone number", Toast.LENGTH_SHORT).show();
             return;
         }
         String rollNumber = mRollNumberField.getText().toString();
         if (TextUtils.isEmpty(rollNumber)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please enter your roll number", Toast.LENGTH_SHORT).show();
             return;
         }
         String collegeName = mCollegeName.getText().toString();
         if (TextUtils.isEmpty(collegeName)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please enter your college name", Toast.LENGTH_SHORT).show();
             return;
         }
         String year = mYearSpinner.getSelectedItem().toString();
         if (TextUtils.isEmpty(year)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please select your year", Toast.LENGTH_SHORT).show();
             return;
         }
         String department = mDepartmentSpinner.getSelectedItem().toString();
         if (TextUtils.isEmpty(department)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please select your department", Toast.LENGTH_SHORT).show();
             return;
         }
         String program = ((RadioButton)findViewById(mProgramRadioGroup.getCheckedRadioButtonId())).getText().toString();
         if (TextUtils.isEmpty(program)) {
+            submitprogressBar.setVisibility(View.GONE);
+            mRegisterBtn.setEnabled(true);
             Toast.makeText(this, "Please select your program", Toast.LENGTH_SHORT).show();
             return;
         }
-        Eventname = eventNameTV.getText().toString();
 
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                // Save data to Firebase here
+                Eventname = eventNameTV.getText().toString();
+                isSubmitting = true;
 
-        GroupRegistrationModel registrationModel = new GroupRegistrationModel(Teamname,leader_name, email, phone, rollNumber,collegeName, year, department, program,teamMembers);
+                GroupRegistrationModel registrationModel = new GroupRegistrationModel(Teamname,leader_name, email, phone, rollNumber,collegeName, year, department, program,teamMembers);
 
-        mFirestore.collection(Eventname+"_Group").add(registrationModel)
-                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                    @Override
-                    public void onSuccess(DocumentReference documentReference) {
-                        //Toast.makeText(Group_Registration_Activity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
-                        // Create a new dialog object and set its content view to the popup layout
-                        Dialog popupDialog = new Dialog(Group_Registration_Activity.this);
-                        View popupView = LayoutInflater.from(Group_Registration_Activity.this).inflate(R.layout.success_registration_popup, null);
-                        popupDialog.setContentView(popupView);
-
-                        // Set up the UI components of the popup layout
-                        TextView popupTitle = popupView.findViewById(R.id.success_reg);
-                        popupTitle.setText("Registration successful!");
-
-                        // Show the popup screen
-                        popupDialog.show();
-                        // Dismiss the dialog after 3 seconds
-                        new Handler().postDelayed(new Runnable() {
+                mFirestore.collection(Eventname+"_Group").add(registrationModel)
+                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
                             @Override
-                            public void run() {
-                                if (popupDialog != null && popupDialog.isShowing()) {
-                                    popupDialog.dismiss();
-                                    String someValue = "success";
-                                    Intent intent = new Intent(Group_Registration_Activity.this, MainActivity.class);
-                                    intent.putExtra("someKey", someValue); // add any necessary data
-                                    startActivity(intent);
+                            public void onSuccess(DocumentReference documentReference) {
+                                isSubmitting = false;
+                                submitprogressBar.setVisibility(View.GONE);
+                                //Toast.makeText(Group_Registration_Activity.this, "Registration successful!", Toast.LENGTH_SHORT).show();
+                                // Create a new dialog object and set its content view to the popup layout
+                                Dialog popupDialog = new Dialog(Group_Registration_Activity.this);
+                                View popupView = LayoutInflater.from(Group_Registration_Activity.this).inflate(R.layout.success_registration_popup, null);
+                                popupDialog.setContentView(popupView);
 
-                                }
+                                // Set up the UI components of the popup layout
+                                TextView popupTitle = popupView.findViewById(R.id.success_reg);
+                                popupTitle.setText("Registration successful!");
+
+                                // Show the popup screen
+                                popupDialog.show();
+                                // Dismiss the dialog after 3 seconds
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (popupDialog != null && popupDialog.isShowing()) {
+                                            popupDialog.dismiss();
+                                            String someValue = "success";
+                                            Intent intent = new Intent(Group_Registration_Activity.this, MainActivity.class);
+                                            intent.putExtra("someKey", someValue); // add any necessary data
+                                            startActivity(intent);
+
+                                        }
+                                    }
+                                }, 1000); // Delay for 3 seconds (3000 milliseconds)
+
                             }
-                        }, 1000); // Delay for 3 seconds (3000 milliseconds)
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                isSubmitting = false;
+                                submitprogressBar.setVisibility(View.GONE);
+                                Toast.makeText(Group_Registration_Activity.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                               // Toast.makeText(EventRegisterActivity.this, "Try Again Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                Dialog popupDialog = new Dialog(Group_Registration_Activity.this);
+                                View popupView = LayoutInflater.from(Group_Registration_Activity.this).inflate(R.layout.failure_registration_popup, null);
+                                popupDialog.setContentView(popupView);
 
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(Group_Registration_Activity.this, "Registration failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
+                                // Set up the UI components of the popup layout
+                                TextView popupTitle = popupView.findViewById(R.id.fail_reg);
+                                popupTitle.setText("Registration Failed");
+
+                                // Show the popup screen
+                                popupDialog.show();
+                                // Dismiss the dialog after 3 seconds
+                                new Handler().postDelayed(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        if (popupDialog != null && popupDialog.isShowing()) {
+                                            popupDialog.dismiss();
+                                            String someValue = "failed";
+                                            Intent intent = new Intent(Group_Registration_Activity.this, MainActivity.class);
+                                            intent.putExtra("someKey", someValue); // add any necessary data
+                                            startActivity(intent);
+
+                                        }
+                                    }
+                                }, 1000); // Delay for 3 seconds (3000 milliseconds)
+                            }
+                        });
+            }
+        }, 3000); // Set timer for 30 seconds
+
+
     }
 
 
